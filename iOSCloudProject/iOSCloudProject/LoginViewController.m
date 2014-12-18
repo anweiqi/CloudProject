@@ -7,6 +7,8 @@
 //
 
 #import <FacebookSDK/FacebookSDK.h>
+#import <GoogleOpenSource/GTLPlusConstants.h>
+#import <GooglePlus/GPPSignInButton.h>
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "LoginView.h"
@@ -15,6 +17,8 @@
 
 @end
 
+static NSString * const kClientId = @"814816072679-6hfkd2q1n8b8slh21e0uie5ctgt0gkpo.apps.googleusercontent.com";
+
 @implementation LoginViewController
 
 - (void)viewDidLoad {
@@ -22,7 +26,20 @@
     LoginView *loginView = [[LoginView alloc] init];
     loginView.delegate = self;
     self.view = loginView;
+    
     // Do any additional setup after loading the view.
+}
+
+- (void)finishedWithAuth: (GTMOAuth2Authentication *)auth
+                   error: (NSError *) error
+{
+    if (error) {
+        NSLog(@"%@",error);
+    } else {
+        AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+        // Call the app delegate's sessionStateChanged:state:error method to handle session state changes
+        [appDelegate userloggedIn];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,7 +60,7 @@
     } else {
         // Open a session showing the user the login UI
         // You must ALWAYS ask for public_profile permissions when opening a session
-        [FBSession openActiveSessionWithReadPermissions:@[@"public_profile"]
+        [FBSession openActiveSessionWithReadPermissions:@[@"read_stream, user_likes, user_friends, email, public_profile"]
                                            allowLoginUI:YES
                                       completionHandler:
          ^(FBSession *session, FBSessionState state, NSError *error) {
@@ -56,14 +73,18 @@
     }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) gloginTapped{
+    GPPSignIn *signIn = [GPPSignIn sharedInstance];
+    signIn.clientID = kClientId;
+    signIn.scopes = [NSArray arrayWithObjects:
+                     kGTLAuthScopePlusLogin, // 在 GTLPlusConstants.h 中定义
+                     nil];
+    signIn.actions = [NSArray arrayWithObjects:@"http://schemas.google.com/ListenActivity",nil];
+    signIn.delegate = self;
+    [signIn authenticate];
+    
+    //[signIn trySilentAuthentication];
 }
-*/
+
 
 @end

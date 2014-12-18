@@ -54,6 +54,7 @@
     CGFloat fixedWidth = 345;
     CGSize newSize = [_content sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
     [_content setFrame:CGRectMake(15.0, 40.0, 345.0, newSize.height)];
+    _content.editable = NO;
     /*CGRect newFrame = _content.frame;
      newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
      _content.frame = newFrame;*/

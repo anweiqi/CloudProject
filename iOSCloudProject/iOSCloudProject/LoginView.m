@@ -7,6 +7,7 @@
 //
 
 #import <FacebookSDK/FacebookSDK.h>
+#import <GooglePlus/GPPSignInButton.h>
 #import "LoginView.h"
 
 @implementation LoginView
@@ -15,6 +16,8 @@
     self = [super initWithFrame:[[UIScreen mainScreen] bounds]];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
+        
+        //_signInButton = [[GPPSignInButton alloc] initWithFrame:CGRectMake(62, 500, 250, 40)];
     }
     return self;
 }
@@ -86,13 +89,18 @@
     UIImage *gImage = [UIImage imageNamed:@"google.png"];
     [gLoginButton setBackgroundImage:gImage forState:UIControlStateNormal];
     gLoginButton.frame = CGRectMake(62, 500, 250, 40);
+    [gLoginButton addTarget:self.delegate action:@selector(gloginTapped)  forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:gLoginButton];
+    
     //[twLoginButton addTarget:self.delegate action:@selector(loginTapped)  forControlEvents:UIControlEventTouchUpInside];
     
     /*FBLoginView *loginView = [[FBLoginView alloc] initWithReadPermissions:@[@"public_profile", @"email", @"user_friends"]];
     loginView.frame = CGRectOffset(loginView.frame, (self.center.x - (loginView.frame.size.width / 2)), 5);
     loginView.delegate = self;
     [self addSubview:loginView];*/
+    
+    //_signInButton.frame = CGRectMake(62, 500, 250, 40);
+    //[self addSubview:_signInButton];
 }
 
 /*

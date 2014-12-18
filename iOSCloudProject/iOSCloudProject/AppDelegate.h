@@ -13,6 +13,8 @@
 
 - (void) sessionStateChanged:(FBSession *)session state:(FBSessionState)state error:(NSError *)error;
 
+- (void) userloggedIn;
+
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) UITabBarController *tabBarController;

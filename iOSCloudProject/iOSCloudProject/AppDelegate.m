@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 Weiqi An. All rights reserved.
 //
 
+
+#import <GooglePlus/GPPURLHandler.h>
+
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "FeedViewController.h"
@@ -58,6 +61,28 @@
     [message show];
 }
 
+- (void) userloggedIn{
+    FeedViewController *feedViewController = [[FeedViewController alloc] init];
+    MapViewController *mapViewController = [[MapViewController alloc] init];
+    SettingViewController *settingViewController = [[SettingViewController alloc] init];
+    FavoriteViewController *favoriteViewController = [[FavoriteViewController alloc] init];
+    
+    UINavigationController *feedNavigationController = [[UINavigationController alloc] init];
+    [feedNavigationController setViewControllers:[NSArray arrayWithObjects:feedViewController, nil]];
+    UINavigationController *mapNavigationController = [[UINavigationController alloc] init];
+    [mapNavigationController setViewControllers:[NSArray arrayWithObjects:mapViewController, nil]];
+    UINavigationController *settingNavigationController = [[UINavigationController alloc] init];
+    [settingNavigationController setViewControllers:[NSArray arrayWithObjects:settingViewController, nil]];
+    UINavigationController *favoriteNavigationController = [[UINavigationController alloc] init];
+    [favoriteNavigationController setViewControllers:[NSArray arrayWithObjects:favoriteViewController, nil]];
+    
+    self.tabBarController = [[UITabBarController alloc] init];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:feedNavigationController, mapNavigationController, favoriteNavigationController, settingNavigationController, nil];
+    
+    self.window.rootViewController = self.tabBarController;
+}
+
+
 // This method will handle ALL the session state changes in the app
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error
 {
@@ -67,25 +92,13 @@
         // Show the user the logged-in UI
         //[self userLoggedIn];
         
-        FeedViewController *feedViewController = [[FeedViewController alloc] init];
-        MapViewController *mapViewController = [[MapViewController alloc] init];
-        SettingViewController *settingViewController = [[SettingViewController alloc] init];
-        FavoriteViewController *favoriteViewController = [[FavoriteViewController alloc] init];
+        //_accessTokenData = FBSession.accessTokenData;
+        FBAccessTokenData *fbAccessToken = [[FBSession activeSession] accessTokenData];
+        NSLog(@"%@",fbAccessToken);
         
-        UINavigationController *feedNavigationController = [[UINavigationController alloc] init];
-        [feedNavigationController setViewControllers:[NSArray arrayWithObjects:feedViewController, nil]];
-        UINavigationController *mapNavigationController = [[UINavigationController alloc] init];
-        [mapNavigationController setViewControllers:[NSArray arrayWithObjects:mapViewController, nil]];
-        UINavigationController *settingNavigationController = [[UINavigationController alloc] init];
-        [settingNavigationController setViewControllers:[NSArray arrayWithObjects:settingViewController, nil]];
-        UINavigationController *favoriteNavigationController = [[UINavigationController alloc] init];
-        [favoriteNavigationController setViewControllers:[NSArray arrayWithObjects:favoriteViewController, nil]];
+        //NSString *post = [NSString stringWithFormat:@"Username=%@&Password=%@",@"username",@"password"];
         
-        self.tabBarController = [[UITabBarController alloc] init];
-        self.tabBarController.viewControllers = [NSArray arrayWithObjects:feedNavigationController, mapNavigationController, favoriteNavigationController, settingNavigationController, nil];
-        
-        
-        self.window.rootViewController = self.tabBarController;
+        [self userloggedIn];
         return;
     }
     if (state == FBSessionStateClosed || state == FBSessionStateClosedLoginFailed){
@@ -144,16 +157,27 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    // Note this handler block should be the exact same as the handler passed to any open calls.
-    [FBSession.activeSession setStateChangeHandler:
-     ^(FBSession *session, FBSessionState state, NSError *error) {
-         
-         // Retrieve the app delegate
-         AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-         // Call the app delegate's sessionStateChanged:state:error method to handle session state changes
-         [appDelegate sessionStateChanged:session state:state error:error];
-     }];
-    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    NSString *urlSTR=[NSString stringWithFormat:@"%@",url];
+    NSArray *tempArr=[urlSTR componentsSeparatedByString:@"/"];
+    NSString *tempStr=[tempArr objectAtIndex:0];
+    if ([tempStr isEqualToString:@"fb366666116837803:"]) {//fb login
+        // Note this handler block should be the exact same as the handler passed to any open calls.
+        [FBSession.activeSession setStateChangeHandler:
+         ^(FBSession *session, FBSessionState state, NSError *error) {
+             
+             // Retrieve the app delegate
+             AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+             // Call the app delegate's sessionStateChanged:state:error method to handle session state changes
+             [appDelegate sessionStateChanged:session state:state error:error];
+         }];
+        return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    }else {
+        //google login
+        return [GPPURLHandler handleURL:url
+                      sourceApplication:sourceApplication
+                             annotation:annotation];
+    }
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

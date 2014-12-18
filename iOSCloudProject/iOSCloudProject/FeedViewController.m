@@ -101,7 +101,7 @@
     CGFloat fixedWidth = 345;
     CGSize newSize = [content sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
     
-    NSLog(@"%f",newSize.height);
+    //NSLog(@"%f",newSize.height);
     return 50 + newSize.height;
     
 }

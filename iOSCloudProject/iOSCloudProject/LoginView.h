@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GooglePlus/GPPSignIn.h>
 
 @protocol LoginDelegate
 @end
 
+@class GPPSignInButton;
+
 @interface LoginView : UIView
 
 @property (weak, nonatomic) id <LoginDelegate> delegate;
+
+@property (retain, nonatomic) GPPSignInButton *signInButton;
 
 @end
