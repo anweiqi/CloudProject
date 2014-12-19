@@ -7,13 +7,7 @@
   },
   "dependencies": {
     "aws-sdk": "*",
-    "aws-snsclient": "^0.2.0",
-    "aws-sqs": "*",
-    "dynamodb": "^0.3.6",
     "express": "3.1.2",
-    "jade": "*",
-    "stylus": "*",
-    "twitter": "*",
     "underscore": "*"
   }
 }
