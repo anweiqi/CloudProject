@@ -52,24 +52,23 @@ exports.search_user= function(req, res) {
     }
 };
 
-exports.check_in = function(req,res) {
-    var shopcart = req.session.shoppingcart;
-    if(shopcart == undefined){
-        res.send([]);
-    }else{
-        query = "select * from catalog where itemName() =";
-        for(i=0; i<shopcart.length-1;i++){
-            query = query + "'"+ shopcart[i] + "' or itemName() = ";
+exports.post_checkin = function(req,res) {
+    var params = url.parse(req.url, true).query;
+    sdb.putItem('checkin', params.email, {password:params.password, name:params.name}, function( error ) {
+        if(error){
+            console.log(error);
         }
-        query = query + "'"+ shopcart[shopcart.length-1] + "'";
-        sdb.select(query, function(error, result, meta){
-            if(error){
-                res.send({error: 1});
-            }else{
-                res.send(result);
-            }
-        })
-    }
+    });
+};
+
+exports.get_checkin = function(req,res) {
+    var params = url.parse(req.url, true).query;
+    console.log(params);
+    sdb.putItem('checkin', params.email, {location:params.location, time:(new Date()).getTime(), text: params.text}, function( error ) {
+        if(error){
+            console.log(error);
+        }
+    });
 };
 
 exports.add_to_cart = function(req,res) {
