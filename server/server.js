@@ -15,7 +15,7 @@ var SDBcontroller = require('./Controllers/SDBController'),
 // app.post('/checkin',SDBcontroller.checkin);
 app.get('/listFollowers/:email',MDBcontroller.listFollowers);
 app.get('/getUserPic/:email',S3controller.getUserPic);
-
+app.post('/getUserPic/:email',S3controller.getUserPic);
 var server = app.listen(2015, function() {
     console.log('Server is working!');
 });

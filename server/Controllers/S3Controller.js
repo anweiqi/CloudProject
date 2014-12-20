@@ -12,3 +12,11 @@ module.exports.getUserPic = function(req,res){
 		res.send(url);
 	})
 }
+module.exports.postUserPic = function(req,res){
+	var email = req.params.email;
+	var data = {Key: email, Body: req.body.image};
+	s3Bucket.putObject(data, function(err, data){
+    	if (err) console.log('Error uploading data: ', data); 
+    	else console.log('succesfully uploaded the image!';
+	});
+}
