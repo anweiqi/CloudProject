@@ -173,6 +173,8 @@ get_first = function(res, limit){
     }
 });*/
 
+exports.simpleDBInit= function() {
+
 sdb.createDomain('userinfo', function( error ) {
     if(error){
         console.log("Error in creating domain");
@@ -185,3 +187,9 @@ sdb.createDomain('checkin', function( error ) {
     }
 });
 
+sdb.createDomain('follow', function( error ) {
+    if(error){
+        console.log("Error in creating domain");
+    }
+});
+}
