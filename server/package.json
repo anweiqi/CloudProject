@@ -1,5 +1,6 @@
 {
   "name": "twitter-map",
+<<<<<<< HEAD
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -11,3 +12,7 @@
     "underscore": "*"
   }
 }
+=======
+  "version": "0.0.1"
+}
+>>>>>>> 6c1f1ecfcf0629ee750c1dbf18f2c1c5448e999d
