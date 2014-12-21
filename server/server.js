@@ -8,18 +8,26 @@ var SDBcontroller = require('./Controllers/SDBController.js');
 
 SDBcontroller.simpleDBInit();
 
-//user?email=weiqian.pku@gmail.com
+//http://localhost:2015/login?email=weiqian@gmail.com&password=weiqian
+app.get('/login', SDBcontroller.login);
+
+//http://localhost:2015/user?email=weiqian@gmail.com
 app.get('/user', SDBcontroller.get_user);
-//user?email=weiqian.pku@gmail.com&password=weiqian&name=WeiqiAn
+//http://localhost:2015/user?email=weiqian@gmail.com&password=weiqian&name=WeiqiAn
 app.post('/user', SDBcontroller.add_user);
 //app.put('/user',  SDBcontroller.add_user);
 
-//http://localhost:2015/checkin?email=weiqian.pku@gmail.com&location=123&text=helloworld
+//http://localhost:2015/checkin
+//http://localhost:2015/checkin?email=weiqian@gmail.com
 app.get('/checkin', SDBcontroller.get_checkin);
+//http://localhost:2015/checkin?email=weiqian@gmail.com&latitude=30&longitude=80&text=helloworld
 app.post('/checkin', SDBcontroller.post_checkin);
 
+//http://localhost:2015/follow?email=weiqian@gmail.com
 app.get('/follow', SDBcontroller.get_follow);
+//http://localhost:2015/follow?email=weiqian@gmail.com&follower=jiuyang@gmail.com
 app.post('/follow', SDBcontroller.post_follow);
+//http://localhost:2015/follow?email=weiqian@gmail.com&follower=jiuyang@gmail.com
 app.delete('/follow', SDBcontroller.delete_follow);
 
 // app.get('/getUserPic/:email',S3controller.getUserPic);

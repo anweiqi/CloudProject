@@ -7,6 +7,22 @@ var aws_secret_key = '4/8xcx6y4EU/No7HDvYuVJ4wNn8dGYT3/MK6CDeN';
 
 var sdb = new simpledb.SimpleDB({keyid:aws_access_key, secret:aws_secret_key});
 
+exports.login= function(req, res) {
+    var params = url.parse(req.url, true).query;
+    sdb.select("select * from userinfo where itemName() = '" + params.email + "'", function( error, result, meta ){
+        if(error){
+            console.log(error);
+            res.status(403).send('Incorrect email/password');
+        }else{
+            if(result[0].password == params.password){
+                res.send({error:0});
+            }else{
+                res.status(403).send('Incorrect email/password');
+            }
+        }
+    });
+};
+
 exports.add_user= function(req, res) {
     var params = url.parse(req.url, true).query;
     sdb.putItem('userinfo', params.email, {password:params.password, name:params.name}, function( error ) {
@@ -54,7 +70,7 @@ exports.get_user= function(req, res) {
 exports.post_checkin = function(req,res) {
     var params = url.parse(req.url, true).query;
     console.log(params);
-    sdb.putItem('checkin', (new Date()).getTime(), {location:params.location, email:params.email, time:(new Date()).getTime(), text: params.text}, function( error ) {
+    sdb.putItem('checkin', (new Date()).getTime(), {latitude:params.latitude, longitude:params.longtitude, email:params.email, time:(new Date()).getTime(), text: params.text}, function( error ) {
         if(error){
             console.log(error);
         }else{
