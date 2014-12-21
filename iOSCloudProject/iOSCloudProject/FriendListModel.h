@@ -6,10 +6,15 @@
 //  Copyright (c) 2014年 Weiqi An. All rights reserved.
 //
 
+#import "Models.h"
 #import <Foundation/Foundation.h>
 
-@interface FriendListModel : NSObject
+@interface FriendListModel : Models
 
-@property (nonatomic, strong) NSArray *friends;
+- (void)getFriends:(NSString *)email;
+- (void)addFriends:(NSString *)email;
+
+@property (nonatomic, strong) NSMutableArray *friends;
+@property (nonatomic, strong) NSString *me;
 
 @end

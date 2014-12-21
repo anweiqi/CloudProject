@@ -6,9 +6,10 @@
 //  Copyright (c) 2014年 Weiqi An. All rights reserved.
 //
 
+#import "Models.h"
 #import <Foundation/Foundation.h>
 
-@interface FriendModel : NSObject
+@interface FriendModel : Models
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *email;

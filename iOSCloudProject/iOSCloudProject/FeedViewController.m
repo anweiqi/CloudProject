@@ -9,6 +9,9 @@
 #import "FeedViewController.h"
 #import "FeedView.h"
 #import "FeedTableViewCell.h"
+#import "FeedListModel.h"
+#import "FeedModel.h"
+#import "FriendListModel.h"
 
 @interface FeedViewController ()
 
@@ -29,66 +32,24 @@
                                       target:self action:@selector(addButtonPressed:)];
         self.navigationItem.rightBarButtonItem = addButton;
         
-        self.data = @[[[NSDictionary alloc] initWithObjectsAndKeys:
-                       @"Weiqi An", @"name",
-                       @"weiqi.jpg", @"image",
-                       @"facebook_icon.png", @"source",
-                       [NSNumber numberWithInt:440803823], @"time",
-                       @"Hey, look at what I got - with Jennifer Shih", @"content",
-                       nil],
-                      [[NSDictionary alloc] initWithObjectsAndKeys:
-                       @"Nick DeGiacomo", @"name",
-                       @"nick.jpg", @"image",
-                       @"twitter_icon.png", @"source",
-                       [NSNumber numberWithInt:440803323], @"time",
-                       @"Nice! So happy they got Stephan Hawkin to voice himself in the \"The Theory of Everything!\"", @"content",
-                       nil],
-                      [[NSDictionary alloc] initWithObjectsAndKeys:
-                       @"John Chaiyasarikul", @"name",
-                       @"john.jpg", @"image",
-                       @"facebook_icon.png", @"source",
-                       [NSNumber numberWithInt:440808423], @"time",
-                       @"Congratulations to my friends and everyone graduating today at Columbia University!!!!", @"content",
-                       nil],
-                      [[NSDictionary alloc] initWithObjectsAndKeys:
-                       @"Jiuyang Zhao", @"name",
-                       @"jiuyang.jpg", @"image",
-                       @"g+.png", @"source",
-                       [NSNumber numberWithInt:440803873], @"time",
-                       @"Intel makes it looks like a nuclear weapon unboxing", @"content",
-                       nil],
-                      [[NSDictionary alloc] initWithObjectsAndKeys:
-                       @"Jiuyang Zhao", @"name",
-                       @"jiuyang.jpg", @"image",
-                       @"g+.png", @"source",
-                       [NSNumber numberWithInt:440803123], @"time",
-                       @"Missed the first alarm and first class in my first day.", @"content",
-                       nil],
-                      [[NSDictionary alloc] initWithObjectsAndKeys:
-                       @"Hongji Yang", @"name",
-                       @"hongji.jpg", @"image",
-                       @"twitter_icon.png", @"source",
-                       [NSNumber numberWithInt:440800823], @"time",
-                       @"The happiest place in the world!", @"content",
-                       nil]];
-        NSString *result = [self getDataFrom: @"http://129.236.230.183:2015/test"];
-        NSLog(@"This is API!!!:%@", result);
-        NSError *error;
-        //NSString *jsondata = @"[{color: \"red\",value: \"#f00\"},{color: \"green\",value: \"#0f0\"}]";
-        NSData *data = [result dataUsingEncoding:NSUTF8StringEncoding];
-        NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        NSDictionary *item = [json objectAtIndex:1];
-        NSLog(@"This is JSON!!!:%@", item[@"color"]);
-        //NSArray *fetchedArr = [json objectForKey:@"ns"];
+        FriendListModel *friendList = [[FriendListModel alloc] init];
+        friendList.me = @"weiqian.pku@gmail.com";
+        
+        [friendList addFriends:@"jiuyangzhaoaaaaa.sjtu@gmail.com"];
+        
+        FeedListModel *feedList = [[FeedListModel alloc] init];
+        [feedList getFeed:@"weiqian.pku@gmail.com"];
+        
+        self.data = feedList.feedList;
         NSLog(@"This is time!!!:%i", (int)CFAbsoluteTimeGetCurrent());
         
-        NSArray *sortedArray = [self.data sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *p1, NSDictionary *p2){
+        /*NSArray *sortedArray = [self.data sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *p1, NSDictionary *p2){
             
             return [p1[@"time"] intValue] < [p2[@"time"] intValue];
             
-        }];
+        }];*/
     
-        self.data = sortedArray;
+        //self.data = sortedArray;
     }
     return self;
 }
@@ -116,10 +77,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *item = [self.data objectAtIndex:indexPath.row];
+    FeedModel *item = [self.data objectAtIndex:indexPath.row];
     UITextView *content = [[UITextView alloc] init];
     [content setFont:[UIFont fontWithName:@"HelveticaNeue" size:13]];
-    [content setText:item[@"content"]];
+    [content setText:item.content];
     //[_content setFrame:CGRectMake(15.0, 40.0, 345.0, 60.0)];
     CGFloat fixedWidth = 345;
     CGSize newSize = [content sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
@@ -140,7 +101,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"CellIdentifier";
-    NSDictionary *item = [self.data objectAtIndex:indexPath.row];
+    FeedModel *item = [self.data objectAtIndex:indexPath.row];
     
     // Dequeue or create a cell of the appropriate type.
     FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -161,9 +122,9 @@
     });
     
     //[cell.profileImageView setImage:[UIImage imageNamed:item[@"image"]]];
-    cell.nameLabel.text = item[@"name"];
-    cell.timeLabel.text = [NSString stringWithFormat:@"%d", [item[@"time"] intValue]];
-    cell.content.text= item[@"content"];
+    cell.nameLabel.text = item.name;
+    cell.timeLabel.text = item.time;
+    cell.content.text= item.content;
     
     //cell.imageView.image=[UIImage imageNamed:@"map_marker.png"];
     //cell.textLabel.text=@"This is a cell";
@@ -174,22 +135,6 @@
     return cell;
 }
 
-- (NSString *) getDataFrom:(NSString *)url{
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setHTTPMethod:@"GET"];
-    [request setURL:[NSURL URLWithString:url]];
-    
-    NSError *error = [[NSError alloc] init];
-    NSHTTPURLResponse *responseCode = nil;
-    
-    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
-    
-    if([responseCode statusCode] != 200){
-        NSLog(@"Error getting %@, HTTP status code %i", url, (int)[responseCode statusCode]);
-        return nil;
-    }
-    
-    return [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
-}
+
 
 @end

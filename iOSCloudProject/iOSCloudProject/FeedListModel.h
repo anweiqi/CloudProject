@@ -6,8 +6,17 @@
 //  Copyright (c) 2014年 Weiqi An. All rights reserved.
 //
 
+#import "Models.h"
+#import "FeedModel.h"
+#import "FriendListModel.h"
 #import <Foundation/Foundation.h>
 
-@interface FeedListModel : NSObject
+@interface FeedListModel : Models
+
+@property (nonatomic, strong) NSMutableArray *feedList;
+- (void)getFeed:(NSString *)email;
+- (void)postFeed:(FeedModel *)feed;
+
+@property (nonatomic, strong) FriendListModel *friendList;
 
 @end

@@ -6,14 +6,16 @@
 //  Copyright (c) 2014年 Weiqi An. All rights reserved.
 //
 
+#import "Models.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface FeedModel : NSObject
+@interface FeedModel : Models
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSString *time;
 @property (nonatomic, strong) NSString *content;
+@property (nonatomic, strong) NSURL *imageUrl;
 
 @end
