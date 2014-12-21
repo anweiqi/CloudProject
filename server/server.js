@@ -1,62 +1,74 @@
 var express = require('express');
-var http = require('http');
-var url = require("url");
 var util = require('util');
 var app = express();
-var session = require("express-session");
-var redis = require('redis');
-var RedisStore = require('connect-redis')(session);
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 
-//var client = redis.createClient();
+var SDBcontroller = require('./Controllers/SDBController.js');
+//var S3controller  = require('./Controllers/S3Controller');
 
-app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", req.headers.origin);
-    res.header("Access-Control-Allow-Credentials", true);
-    next();
+SDBcontroller.simpleDBInit();
+
+//user?email=weiqian.pku@gmail.com
+app.get('/user', SDBcontroller.get_user);
+//user?email=weiqian.pku@gmail.com&password=weiqian&name=WeiqiAn
+app.post('/user', SDBcontroller.add_user);
+//app.put('/user',  SDBcontroller.add_user);
+
+//http://localhost:2015/checkin?email=weiqian.pku@gmail.com&location=123&text=helloworld
+app.get('/checkin', SDBcontroller.get_checkin);
+app.post('/checkin', SDBcontroller.post_checkin);
+
+app.get('/follow', SDBcontroller.get_follow);
+app.post('/follow', SDBcontroller.post_follow);
+app.delete('/follow', SDBcontroller.delete_follow);
+
+// app.get('/getUserPic/:email',S3controller.getUserPic);
+// app.post('/getUserPic/:email',S3controller.getUserPic);
+
+// var fs = require('fs');
+// fs.readFile('test.jpg', function(err, data) {
+// 	request = {
+// 		params: {email:"cool.jpg"},
+// 		body:data
+// 	};
+// 	S3controller.postUserPic(request);
+// });
+
+//app.get('/getUserPic/:email',S3controller.getUserPic);
+//app.post('/postUserPic',S3controller.postUserPic);
+
+app.get('/test',function(req,res) {
+	var test = [
+		{
+			color: "red",
+			value: "#f00"
+		},
+		{
+			color: "green",
+			value: "#0f0"
+		},
+		{
+			color: "blue",
+			value: "#00f"
+		},
+		{
+			color: "cyan",
+			value: "#0ff"
+		},
+		{
+			color: "magenta",
+			value: "#f0f"
+		},
+		{
+			color: "yellow",
+			value: "#ff0"
+		},
+		{
+			color: "black",
+			value: "#000"
+		}
+	];
+	res.send(test);
 });
-
-app.use(session({
-    store: new RedisStore({
-        host: 'localhost',
-        port: 6379,
-        ttl: 1000000000000
-        //client: client
-    }),
-    cookie: {maxAge: 360000000000, httpOnly: false},
-    secret: '1234567890QWERTY'
-}));
-
-app.use(cookieParser('1234567890QWERTY'));
-app.use(bodyParser());
-app.use(bodyParser.urlencoded({extended: true}));
-
-app.engine('html', require('ejs').renderFile);
-app.use("/js", express.static(__dirname + '/public/js'));
-app.use("/images", express.static(__dirname + '/public/images'));
-app.use("/views", express.static(__dirname + '/views'));
-app.use("/semantic", express.static(__dirname + '/public/semantic'));
-
-app.use(multer({dest: './uploads/'}));
-
-app.set('view engine', 'html');
-
-/*app.get('/', function(req, res) {
-    if(req.session.currentUser){
-        res.render('index',{myVar : req.session.currentUser});
-    }else{
-        res.render('index',{myVar : null});
-    }
-});*/
-
-
-//loginAPI
-app.get('/login', function(req, res){
-    var params = url.parse(req.url, true).query;
-    console.log(params);
-});
-
 
 var server = app.listen(2015, function() {
     console.log('Server is working!');
