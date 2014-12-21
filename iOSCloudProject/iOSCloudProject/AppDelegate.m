@@ -8,6 +8,7 @@
 
 
 #import <GooglePlus/GPPURLHandler.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
@@ -24,10 +25,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //add Google Map Api key
+    [GMSServices provideAPIKey:@"AIzaSyDLgFABMiYp_Amm2f4aTvLV-7EdS_iHyWc"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
     
     // Whenever a person opens the app, check for a cached session
     /*if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {

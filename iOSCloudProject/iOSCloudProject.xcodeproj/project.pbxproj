@@ -7,12 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3839EF441A439E2A00F3315C /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF431A439E2A00F3315C /* GoogleOpenSource.framework */; };
+		3839EF461A439E3800F3315C /* GooglePlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF451A439E3800F3315C /* GooglePlus.bundle */; };
+		3839EF481A439E4300F3315C /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF471A439E4300F3315C /* GooglePlus.framework */; };
+		3839EF4A1A43A21300F3315C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF491A43A21300F3315C /* FacebookSDK.framework */; };
+		3839EF4C1A43C47C00F3315C /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF4B1A43C47C00F3315C /* GoogleMaps.framework */; };
+		3839EF4E1A43C4EF00F3315C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF4D1A43C4EF00F3315C /* AVFoundation.framework */; };
+		3839EF501A43C4FE00F3315C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF4F1A43C4FE00F3315C /* CoreData.framework */; };
+		3839EF521A43C51000F3315C /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF511A43C51000F3315C /* GLKit.framework */; };
+		3839EF541A43C51F00F3315C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF531A43C51F00F3315C /* ImageIO.framework */; };
+		3839EF561A43C52C00F3315C /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF551A43C52C00F3315C /* libc++.dylib */; };
+		3839EF581A43C53500F3315C /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF571A43C53500F3315C /* libicucore.dylib */; };
+		3839EF5A1A43C54000F3315C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF591A43C54000F3315C /* libz.dylib */; };
+		3839EF5C1A43C54D00F3315C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF5B1A43C54D00F3315C /* OpenGLES.framework */; };
+		3839EF5E1A43C55700F3315C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF5D1A43C55700F3315C /* QuartzCore.framework */; };
+		3839EF601A43D11E00F3315C /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3839EF5F1A43D11E00F3315C /* GoogleMaps.bundle */; };
+		386EEEB61A462F9F00AC98DA /* FeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEB51A462F9F00AC98DA /* FeedModel.m */; };
+		386EEEB91A4635AC00AC98DA /* FriendListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEB81A4635AC00AC98DA /* FriendListModel.m */; };
+		386EEEBC1A4638F100AC98DA /* FriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEBB1A4638F100AC98DA /* FriendModel.m */; };
+		386EEEBF1A463C3C00AC98DA /* FeedListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEBE1A463C3C00AC98DA /* FeedListModel.m */; };
 		3E3AB8871A1835F000CE0253 /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB8861A1835F000CE0253 /* facebook_icon.png */; };
 		3E3AB8891A1835FD00CE0253 /* twitter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB8881A1835FD00CE0253 /* twitter_icon.png */; };
 		3E3AB88C1A1839F100CE0253 /* FavoriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3AB88B1A1839F100CE0253 /* FavoriteTableViewCell.m */; };
 		3E3AB88E1A183B9F00CE0253 /* weiqi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB88D1A183B9F00CE0253 /* weiqi.jpg */; };
 		3E3AB8901A18544400CE0253 /* g+.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB88F1A18544400CE0253 /* g+.png */; };
-		3E3AB8921A18545300CE0253 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB8911A18545300CE0253 /* Images.xcassets */; };
 		3E3AB8951A18565300CE0253 /* jiuyang.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB8931A18565300CE0253 /* jiuyang.jpg */; };
 		3E3AB8961A18565300CE0253 /* nick.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB8941A18565300CE0253 /* nick.jpg */; };
 		3E3AB8981A18567900CE0253 /* john.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB8971A18567900CE0253 /* john.jpg */; };
@@ -20,9 +38,6 @@
 		3E3AB89C1A18B8CA00CE0253 /* google.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB89B1A18B8CA00CE0253 /* google.png */; };
 		3E3AB8A01A18BFCD00CE0253 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB89F1A18BFCD00CE0253 /* logo.png */; };
 		3E3AB8A21A18D9EF00CE0253 /* yao.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB8A11A18D9EF00CE0253 /* yao.jpg */; };
-		3E3AB98B1A217AEC00CE0253 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3AB98A1A217AEC00CE0253 /* GooglePlus.framework */; };
-		3E3AB98D1A21832100CE0253 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3AB98C1A21832100CE0253 /* GoogleOpenSource.framework */; };
-		3E3AB98F1A2183A200CE0253 /* GooglePlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3AB98E1A2183A200CE0253 /* GooglePlus.bundle */; };
 		3E3AB9911A21841700CE0253 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3AB9901A21841700CE0253 /* CoreGraphics.framework */; };
 		3E3AB9931A21842000CE0253 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3AB9921A21842000CE0253 /* AddressBook.framework */; };
 		3E3AB9951A21842900CE0253 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3AB9941A21842900CE0253 /* AssetsLibrary.framework */; };
@@ -39,7 +54,6 @@
 		3E8451311A101B5200D7659A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8451301A101B5200D7659A /* main.m */; };
 		3E8451341A101B5200D7659A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8451331A101B5200D7659A /* AppDelegate.m */; };
 		3E84514B1A101B5200D7659A /* iOSCloudProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E84514A1A101B5200D7659A /* iOSCloudProjectTests.m */; };
-		3E8451551A1035DD00D7659A /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8451541A1035DD00D7659A /* FacebookSDK.framework */; };
 		3E8451581A104D4C00D7659A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8451571A104D4C00D7659A /* LoginViewController.m */; };
 		3E84515B1A1059DE00D7659A /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E84515A1A1059DE00D7659A /* LoginView.m */; };
 		3EE8BD7B1A1551570056E6BE /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8BD7A1A1551570056E6BE /* facebook.png */; };
@@ -66,6 +80,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3839EF431A439E2A00F3315C /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../../google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
+		3839EF451A439E3800F3315C /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "../../../google-plus-ios-sdk-1.7.1/GooglePlus.bundle"; sourceTree = "<group>"; };
+		3839EF471A439E4300F3315C /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../../google-plus-ios-sdk-1.7.1/GooglePlus.framework"; sourceTree = "<group>"; };
+		3839EF491A43A21300F3315C /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = "../../../FacebookSDK/facebook-ios-sdk/build/FacebookSDK.framework"; sourceTree = "<group>"; };
+		3839EF4B1A43C47C00F3315C /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = "../../../GoogleMapSDK/GoogleMaps-iOS-1.9.0/GoogleMaps.framework"; sourceTree = "<group>"; };
+		3839EF4D1A43C4EF00F3315C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3839EF4F1A43C4FE00F3315C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3839EF511A43C51000F3315C /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		3839EF531A43C51F00F3315C /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		3839EF551A43C52C00F3315C /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		3839EF571A43C53500F3315C /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		3839EF591A43C54000F3315C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		3839EF5B1A43C54D00F3315C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		3839EF5D1A43C55700F3315C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3839EF5F1A43D11E00F3315C /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "../../../GoogleMapSDK/GoogleMaps-iOS-1.9.0/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
+		386EEEB41A462F9F00AC98DA /* FeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedModel.h; sourceTree = "<group>"; };
+		386EEEB51A462F9F00AC98DA /* FeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedModel.m; sourceTree = "<group>"; };
+		386EEEB71A4635AC00AC98DA /* FriendListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListModel.h; sourceTree = "<group>"; };
+		386EEEB81A4635AC00AC98DA /* FriendListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListModel.m; sourceTree = "<group>"; };
+		386EEEBA1A4638F100AC98DA /* FriendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendModel.h; sourceTree = "<group>"; };
+		386EEEBB1A4638F100AC98DA /* FriendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendModel.m; sourceTree = "<group>"; };
+		386EEEBD1A463C3C00AC98DA /* FeedListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedListModel.h; sourceTree = "<group>"; };
+		386EEEBE1A463C3C00AC98DA /* FeedListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListModel.m; sourceTree = "<group>"; };
 		3E3AB8861A1835F000CE0253 /* facebook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook_icon.png; path = Images.xcassets/facebook_icon.png; sourceTree = "<group>"; };
 		3E3AB8881A1835FD00CE0253 /* twitter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter_icon.png; path = Images.xcassets/twitter_icon.png; sourceTree = "<group>"; };
 		3E3AB88A1A1839F100CE0253 /* FavoriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTableViewCell.h; sourceTree = "<group>"; };
@@ -80,9 +117,6 @@
 		3E3AB89B1A18B8CA00CE0253 /* google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = google.png; path = Images.xcassets/google.png; sourceTree = "<group>"; };
 		3E3AB89F1A18BFCD00CE0253 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = Images.xcassets/logo.png; sourceTree = "<group>"; };
 		3E3AB8A11A18D9EF00CE0253 /* yao.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = yao.jpg; path = Images.xcassets/yao.jpg; sourceTree = "<group>"; };
-		3E3AB98A1A217AEC00CE0253 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../../Documents/google-plus-ios-sdk-1.7.1/GooglePlus.framework"; sourceTree = "<group>"; };
-		3E3AB98C1A21832100CE0253 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../../Documents/google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
-		3E3AB98E1A2183A200CE0253 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "../../../Documents/google-plus-ios-sdk-1.7.1/GooglePlus.bundle"; sourceTree = "<group>"; };
 		3E3AB9901A21841700CE0253 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3E3AB9921A21842000CE0253 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		3E3AB9941A21842900CE0253 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -106,7 +140,6 @@
 		3E8451441A101B5200D7659A /* iOSCloudProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSCloudProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E8451491A101B5200D7659A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E84514A1A101B5200D7659A /* iOSCloudProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSCloudProjectTests.m; sourceTree = "<group>"; };
-		3E8451541A1035DD00D7659A /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		3E8451561A104D4C00D7659A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3E8451571A104D4C00D7659A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		3E8451591A1059DE00D7659A /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
@@ -133,8 +166,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E3AB9A51A21846E00CE0253 /* UIKit.framework in Frameworks */,
 				3E3AB9A31A21846600CE0253 /* SystemConfiguration.framework in Frameworks */,
+				3839EF5E1A43C55700F3315C /* QuartzCore.framework in Frameworks */,
+				3839EF5C1A43C54D00F3315C /* OpenGLES.framework in Frameworks */,
+				3839EF5A1A43C54000F3315C /* libz.dylib in Frameworks */,
+				3839EF581A43C53500F3315C /* libicucore.dylib in Frameworks */,
+				3839EF561A43C52C00F3315C /* libc++.dylib in Frameworks */,
+				3839EF541A43C51F00F3315C /* ImageIO.framework in Frameworks */,
+				3839EF521A43C51000F3315C /* GLKit.framework in Frameworks */,
+				3839EF501A43C4FE00F3315C /* CoreData.framework in Frameworks */,
+				3839EF4E1A43C4EF00F3315C /* AVFoundation.framework in Frameworks */,
+				3839EF4C1A43C47C00F3315C /* GoogleMaps.framework in Frameworks */,
+				3839EF4A1A43A21300F3315C /* FacebookSDK.framework in Frameworks */,
+				3839EF481A439E4300F3315C /* GooglePlus.framework in Frameworks */,
+				3839EF461A439E3800F3315C /* GooglePlus.bundle in Frameworks */,
+				3839EF441A439E2A00F3315C /* GoogleOpenSource.framework in Frameworks */,
+				3E3AB9A51A21846E00CE0253 /* UIKit.framework in Frameworks */,
 				3E3AB9A11A21845D00CE0253 /* Security.framework in Frameworks */,
 				3E3AB99F1A21845500CE0253 /* MediaPlayer.framework in Frameworks */,
 				3E3AB99D1A21844E00CE0253 /* CoreText.framework in Frameworks */,
@@ -144,10 +191,6 @@
 				3E3AB9951A21842900CE0253 /* AssetsLibrary.framework in Frameworks */,
 				3E3AB9931A21842000CE0253 /* AddressBook.framework in Frameworks */,
 				3E3AB9911A21841700CE0253 /* CoreGraphics.framework in Frameworks */,
-				3E3AB98F1A2183A200CE0253 /* GooglePlus.bundle in Frameworks */,
-				3E3AB98D1A21832100CE0253 /* GoogleOpenSource.framework in Frameworks */,
-				3E3AB98B1A217AEC00CE0253 /* GooglePlus.framework in Frameworks */,
-				3E8451551A1035DD00D7659A /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +207,21 @@
 		3E8451221A101B5200D7659A = {
 			isa = PBXGroup;
 			children = (
+				3839EF5F1A43D11E00F3315C /* GoogleMaps.bundle */,
+				3839EF5D1A43C55700F3315C /* QuartzCore.framework */,
+				3839EF5B1A43C54D00F3315C /* OpenGLES.framework */,
+				3839EF591A43C54000F3315C /* libz.dylib */,
+				3839EF571A43C53500F3315C /* libicucore.dylib */,
+				3839EF551A43C52C00F3315C /* libc++.dylib */,
+				3839EF531A43C51F00F3315C /* ImageIO.framework */,
+				3839EF511A43C51000F3315C /* GLKit.framework */,
+				3839EF4F1A43C4FE00F3315C /* CoreData.framework */,
+				3839EF4D1A43C4EF00F3315C /* AVFoundation.framework */,
+				3839EF4B1A43C47C00F3315C /* GoogleMaps.framework */,
+				3839EF491A43A21300F3315C /* FacebookSDK.framework */,
+				3839EF471A439E4300F3315C /* GooglePlus.framework */,
+				3839EF451A439E3800F3315C /* GooglePlus.bundle */,
+				3839EF431A439E2A00F3315C /* GoogleOpenSource.framework */,
 				3E3AB9A41A21846E00CE0253 /* UIKit.framework */,
 				3E3AB9A21A21846600CE0253 /* SystemConfiguration.framework */,
 				3E3AB9A01A21845D00CE0253 /* Security.framework */,
@@ -175,11 +233,7 @@
 				3E3AB9941A21842900CE0253 /* AssetsLibrary.framework */,
 				3E3AB9921A21842000CE0253 /* AddressBook.framework */,
 				3E3AB9901A21841700CE0253 /* CoreGraphics.framework */,
-				3E3AB98E1A2183A200CE0253 /* GooglePlus.bundle */,
-				3E3AB98C1A21832100CE0253 /* GoogleOpenSource.framework */,
-				3E3AB98A1A217AEC00CE0253 /* GooglePlus.framework */,
 				3E3AB8911A18545300CE0253 /* Images.xcassets */,
-				3E8451541A1035DD00D7659A /* FacebookSDK.framework */,
 				3E84512D1A101B5200D7659A /* iOSCloudProject */,
 				3E8451471A101B5200D7659A /* iOSCloudProjectTests */,
 				3E84512C1A101B5200D7659A /* Products */,
@@ -198,41 +252,49 @@
 		3E84512D1A101B5200D7659A /* iOSCloudProject */ = {
 			isa = PBXGroup;
 			children = (
-				3E8451591A1059DE00D7659A /* LoginView.h */,
-				3E84515A1A1059DE00D7659A /* LoginView.m */,
 				3E3AB89F1A18BFCD00CE0253 /* logo.png */,
 				3E3AB89B1A18B8CA00CE0253 /* google.png */,
 				3EE8BD801A155E580056E6BE /* twitter.png */,
-				3E8451321A101B5200D7659A /* AppDelegate.h */,
-				3E8451331A101B5200D7659A /* AppDelegate.m */,
-				3E435A441A182CC7009B77BC /* FavoriteViewController.h */,
-				3E435A451A182CC7009B77BC /* FavoriteViewController.m */,
 				3E3AB8A11A18D9EF00CE0253 /* yao.jpg */,
 				3E3AB8881A1835FD00CE0253 /* twitter_icon.png */,
 				3E3AB8861A1835F000CE0253 /* facebook_icon.png */,
-				3EE8BD851A159C4C0056E6BE /* FeedViewController.h */,
-				3EE8BD861A159C4C0056E6BE /* FeedViewController.m */,
 				3E3AB8991A189D6900CE0253 /* hongji.jpg */,
 				3E3AB8971A18567900CE0253 /* john.jpg */,
 				3E3AB8931A18565300CE0253 /* jiuyang.jpg */,
 				3E3AB8941A18565300CE0253 /* nick.jpg */,
 				3E3AB88F1A18544400CE0253 /* g+.png */,
+				3E3AB88D1A183B9F00CE0253 /* weiqi.jpg */,
+				3EE8BD8E1A15B4E00056E6BE /* map_marker.png */,
+				3EE8BD8F1A15B4E00056E6BE /* news.png */,
+				3EE8BD901A15B4E00056E6BE /* settings.png */,
+				3E8451321A101B5200D7659A /* AppDelegate.h */,
+				3E8451331A101B5200D7659A /* AppDelegate.m */,
+				3E8451591A1059DE00D7659A /* LoginView.h */,
+				3E84515A1A1059DE00D7659A /* LoginView.m */,
+				3EE8BD941A15CC4E0056E6BE /* FeedView.h */,
+				3EE8BD951A15CC4E0056E6BE /* FeedView.m */,
 				3E435A3B1A1723C8009B77BC /* FeedTableViewCell.h */,
 				3E435A3C1A1723C8009B77BC /* FeedTableViewCell.m */,
 				3E3AB88A1A1839F100CE0253 /* FavoriteTableViewCell.h */,
 				3E3AB88B1A1839F100CE0253 /* FavoriteTableViewCell.m */,
-				3E3AB88D1A183B9F00CE0253 /* weiqi.jpg */,
-				3EE8BD941A15CC4E0056E6BE /* FeedView.h */,
-				3EE8BD951A15CC4E0056E6BE /* FeedView.m */,
-				3EE8BD8E1A15B4E00056E6BE /* map_marker.png */,
-				3EE8BD8F1A15B4E00056E6BE /* news.png */,
-				3EE8BD901A15B4E00056E6BE /* settings.png */,
-				3EE8BD881A159C5A0056E6BE /* MapViewController.h */,
-				3EE8BD891A159C5A0056E6BE /* MapViewController.m */,
-				3EE8BD8B1A159C810056E6BE /* SettingViewController.h */,
-				3EE8BD8C1A159C810056E6BE /* SettingViewController.m */,
 				3E8451571A104D4C00D7659A /* LoginViewController.m */,
 				3E8451561A104D4C00D7659A /* LoginViewController.h */,
+				3EE8BD851A159C4C0056E6BE /* FeedViewController.h */,
+				3EE8BD861A159C4C0056E6BE /* FeedViewController.m */,
+				3EE8BD881A159C5A0056E6BE /* MapViewController.h */,
+				3EE8BD891A159C5A0056E6BE /* MapViewController.m */,
+				3E435A441A182CC7009B77BC /* FavoriteViewController.h */,
+				3E435A451A182CC7009B77BC /* FavoriteViewController.m */,
+				3EE8BD8B1A159C810056E6BE /* SettingViewController.h */,
+				3EE8BD8C1A159C810056E6BE /* SettingViewController.m */,
+				386EEEBD1A463C3C00AC98DA /* FeedListModel.h */,
+				386EEEBE1A463C3C00AC98DA /* FeedListModel.m */,
+				386EEEB41A462F9F00AC98DA /* FeedModel.h */,
+				386EEEB51A462F9F00AC98DA /* FeedModel.m */,
+				386EEEB71A4635AC00AC98DA /* FriendListModel.h */,
+				386EEEB81A4635AC00AC98DA /* FriendListModel.m */,
+				386EEEBA1A4638F100AC98DA /* FriendModel.h */,
+				386EEEBB1A4638F100AC98DA /* FriendModel.m */,
 				3EE8BD7C1A155B730056E6BE /* Images.xcassets */,
 				3EE8BD7E1A155B900056E6BE /* Icon.png */,
 				3EE8BD7A1A1551570056E6BE /* facebook.png */,
@@ -311,7 +373,7 @@
 		3E8451231A101B5200D7659A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Weiqi An";
 				TargetAttributes = {
 					3E84512A1A101B5200D7659A = {
@@ -365,6 +427,7 @@
 				vi,
 				zh_CN,
 				zh_TW,
+				he,
 			);
 			mainGroup = 3E8451221A101B5200D7659A;
 			productRefGroup = 3E84512C1A101B5200D7659A /* Products */;
@@ -385,6 +448,7 @@
 				3EE8BD7F1A155B900056E6BE /* Icon.png in Resources */,
 				3E3AB8A01A18BFCD00CE0253 /* logo.png in Resources */,
 				3EE8BD931A15B4E00056E6BE /* settings.png in Resources */,
+				3839EF601A43D11E00F3315C /* GoogleMaps.bundle in Resources */,
 				3E3AB88E1A183B9F00CE0253 /* weiqi.jpg in Resources */,
 				3E3AB8871A1835F000CE0253 /* facebook_icon.png in Resources */,
 				3EE8BD811A155E580056E6BE /* twitter.png in Resources */,
@@ -395,7 +459,6 @@
 				3E3AB8981A18567900CE0253 /* john.jpg in Resources */,
 				3EE8BD911A15B4E00056E6BE /* map_marker.png in Resources */,
 				3E3AB8A21A18D9EF00CE0253 /* yao.jpg in Resources */,
-				3E3AB8921A18545300CE0253 /* Images.xcassets in Resources */,
 				3EE8BD7B1A1551570056E6BE /* facebook.png in Resources */,
 				3E3AB8901A18544400CE0253 /* g+.png in Resources */,
 				3E3AB8961A18565300CE0253 /* nick.jpg in Resources */,
@@ -420,8 +483,11 @@
 			files = (
 				3E435A461A182CC7009B77BC /* FavoriteViewController.m in Sources */,
 				3E8451341A101B5200D7659A /* AppDelegate.m in Sources */,
+				386EEEB61A462F9F00AC98DA /* FeedModel.m in Sources */,
+				386EEEBF1A463C3C00AC98DA /* FeedListModel.m in Sources */,
 				3E435A3D1A1723C8009B77BC /* FeedTableViewCell.m in Sources */,
 				3E3AB88C1A1839F100CE0253 /* FavoriteTableViewCell.m in Sources */,
+				386EEEB91A4635AC00AC98DA /* FriendListModel.m in Sources */,
 				3E8451311A101B5200D7659A /* main.m in Sources */,
 				3E84515B1A1059DE00D7659A /* LoginView.m in Sources */,
 				3EE8BD871A159C4C0056E6BE /* FeedViewController.m in Sources */,
@@ -429,6 +495,7 @@
 				3E8451581A104D4C00D7659A /* LoginViewController.m in Sources */,
 				3EE8BD8A1A159C5A0056E6BE /* MapViewController.m in Sources */,
 				3EE8BD8D1A159C810056E6BE /* SettingViewController.m in Sources */,
+				386EEEBC1A4638F100AC98DA /* FriendModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +602,9 @@
 					"$(inherited)",
 					/Users/weiqi/Documents/FacebookSDK,
 					"/Users/weiqi/Documents/google-plus-ios-sdk-1.7.1",
+					"/Users/jiuyangzhao/Documents/FacebookSDK/facebook-ios-sdk/build",
+					"/Users/jiuyangzhao/Documents/google-plus-ios-sdk-1.7.1",
+					"/Users/jiuyangzhao/Documents/GoogleMapSDK/GoogleMaps-iOS-1.9.0",
 				);
 				INFOPLIST_FILE = iOSCloudProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -551,6 +621,9 @@
 					"$(inherited)",
 					/Users/weiqi/Documents/FacebookSDK,
 					"/Users/weiqi/Documents/google-plus-ios-sdk-1.7.1",
+					"/Users/jiuyangzhao/Documents/FacebookSDK/facebook-ios-sdk/build",
+					"/Users/jiuyangzhao/Documents/google-plus-ios-sdk-1.7.1",
+					"/Users/jiuyangzhao/Documents/GoogleMapSDK/GoogleMaps-iOS-1.9.0",
 				);
 				INFOPLIST_FILE = iOSCloudProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
