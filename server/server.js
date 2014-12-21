@@ -1,5 +1,6 @@
 var express = require('express');
 var util = require('util');
+var fs = require('fs');
 var app = express();
 
 var SDBcontroller = require('./Controllers/SDBController.js');
@@ -24,7 +25,7 @@ app.delete('/follow', SDBcontroller.delete_follow);
 // app.get('/getUserPic/:email',S3controller.getUserPic);
 // app.post('/getUserPic/:email',S3controller.getUserPic);
 
-// var fs = require('fs');
+
 // fs.readFile('test.jpg', function(err, data) {
 // 	request = {
 // 		params: {email:"cool.jpg"},
