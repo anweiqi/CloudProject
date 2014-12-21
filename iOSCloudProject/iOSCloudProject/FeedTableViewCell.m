@@ -19,10 +19,6 @@
         //[_profileImageView setImage:[UIImage imageNamed:@"Icon.png"]];
         [self addSubview:_profileImageView];
         
-        _sourceImageView = [[UIImageView alloc] initWithFrame:CGRectMake(55.0, 18.0, 14.0, 14.0)];
-        //[_sourceImageView setImage:[UIImage imageNamed:@"rsz_google_plus.png"]];
-        [self addSubview:_sourceImageView];
-        
         _nameLabel = [[UILabel alloc] init];
         [self addSubview:_nameLabel];
         
