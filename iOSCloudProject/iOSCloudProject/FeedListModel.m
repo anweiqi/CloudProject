@@ -23,6 +23,7 @@
     NSData* textData = [self getDataFrom: textUrl];
     NSData* imageUrlData = [self getDataFrom: imageUrl];
     NSString* imageS3String = [[NSString alloc] initWithData:imageUrlData encoding:NSUTF8StringEncoding];
+    NSLog(@"This is url!!!!%@", imageS3String);
     NSURL *imageS3Url = [NSURL URLWithString:imageS3String];
     NSError* error;
 //error????
@@ -30,10 +31,14 @@
     
     for (NSDictionary *item in json) {
         FeedModel *feed = [[FeedModel alloc] init];
-        feed.name = @"weiqi";//item[@"name"];
+        feed.name = self.friendList.friendsDictionary[item[@"email"]];
+        feed.color = self.friendList.friendsColor[item[@"email"]];
         feed.time = item[@"time"];
         feed.content = item[@"text"];
         feed.imageUrl = imageS3Url;
+        feed.latitude = [item[@"latitude"] doubleValue];
+        feed.longitude = [item[@"longitude"] doubleValue];
+        NSLog(@"This is position %f and %f, %s and %s", feed.latitude, feed.longitude, item[@"latitude"], item[@"longitude"]);
         [self.feedList addObject:feed];
     }
     
@@ -46,7 +51,7 @@
 
     NSMutableArray *sortedArray = [[self.feedList sortedArrayUsingComparator:^NSComparisonResult(FeedModel *f1, FeedModel *f2){
         
-        return [f1.time compare: f2.time];
+        return [f2.time compare: f1.time];
         
     }] mutableCopy];
     self.feedList = sortedArray;

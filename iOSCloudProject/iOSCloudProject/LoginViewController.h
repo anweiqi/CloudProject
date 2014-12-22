@@ -12,6 +12,9 @@
 
 @interface LoginViewController : UIViewController <LoginDelegate, GPPSignInDelegate>
 
+@property (nonatomic,weak) IBOutlet UITextField * emailTextField;
+@property (nonatomic,weak) IBOutlet UITextField * passwordTextField;
+
 - (void) loginTapped;
 
 @end

@@ -13,9 +13,12 @@
 @interface FeedModel : Models
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) UIColor *color;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSString *time;
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSURL *imageUrl;
+@property (nonatomic) double latitude;
+@property (nonatomic) double longitude;
 
 @end

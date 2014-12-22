@@ -16,11 +16,14 @@
 @interface FeedViewController ()
 
 @property (strong, nonatomic) UITableView *newsTableView;
-@property (strong, nonatomic) NSArray *data;
+@property (strong, nonatomic) NSMutableArray *filteredData;
+@property (nonatomic) BOOL isSearching;
 
 @end
 
 @implementation FeedViewController
+@synthesize searchBar;
+@synthesize searchController;
 
 - (id)init {
     self = [super init];
@@ -35,37 +38,30 @@
         FriendListModel *friendList = [[FriendListModel alloc] init];
         friendList.me = @"weiqian.pku@gmail.com";
         
-        [friendList addFriends:@"jiuyangzhaoaaaaa.sjtu@gmail.com"];
+        //[friendList addFriends:@"jiuyangzhaoaaaaa.sjtu@gmail.com"];
         
         FeedListModel *feedList = [[FeedListModel alloc] init];
         [feedList getFeed:@"weiqian.pku@gmail.com"];
         
         self.data = feedList.feedList;
         NSLog(@"This is time!!!:%i", (int)CFAbsoluteTimeGetCurrent());
-        
-        /*NSArray *sortedArray = [self.data sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *p1, NSDictionary *p2){
-            
-            return [p1[@"time"] intValue] < [p2[@"time"] intValue];
-            
-        }];*/
-    
-        //self.data = sortedArray;
+        self.filteredData = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0, 0.0, 375.0, 44.0)];
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0, 0.0, 375.0, 44.0)];
     
-    searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    self.searchBar.searchBarStyle = UISearchBarStyleMinimal;
     
     // create the Search Display Controller with the above Search Bar
-    self.searchController = [[UISearchDisplayController alloc]initWithSearchBar:searchBar contentsController:self];
+    self.searchController = [[UISearchDisplayController alloc]initWithSearchBar:self.searchBar contentsController:self];
     self.searchController.searchResultsDataSource = self;
     self.searchController.searchResultsDelegate = self;
     //[self.tableView setContentOffset:CGPointMake(0,44) animated:YES];
-    self.tableView.tableHeaderView = searchBar;
+    self.tableView.tableHeaderView = self.searchBar;
     
     // Do any additional setup after loading the view.
 }
@@ -110,10 +106,8 @@
         //cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    NSURL *imageURL = [NSURL URLWithString:@"https://lh6.googleusercontent.com/-2lJYGtfXKwQ/AAAAAAAAAAI/AAAAAAAB0yM/jLy3FghH4mA/s120-c/photo.jpg"];
-    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        NSData *imageData = [NSData dataWithContentsOfURL:item.imageUrl];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
@@ -135,6 +129,45 @@
     return cell;
 }
 
+- (void)searchTableList {
+    NSString *searchString = self.searchBar.text;
+    
+    for (FeedModel *feed in self.data) {
+        NSString *tempStr = feed.name;
+        NSComparisonResult result = [tempStr compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
+        if (result == NSOrderedSame) {
+            [self.filteredData addObject:tempStr];
+        }
+    }
+}
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.isSearching = YES;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"Text change - %d",self.isSearching);
+    
+    //Remove all objects first.
+    [self.filteredData removeAllObjects];
+    
+    if([searchText length] != 0) {
+        self.isSearching = YES;
+        [self searchTableList];
+    }
+    else {
+        self.isSearching = NO;
+    }
+    [self.tableView reloadData];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Cancel clicked");
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"Search Clicked");
+    [self searchTableList];
+}
 
 @end

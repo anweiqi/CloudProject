@@ -8,11 +8,13 @@
 
 #import "FriendListModel.h"
 #import "FriendModel.h"
+#import <UIKit/UIKit.h>
 
 @implementation FriendListModel
 - (id) init {
     self = [super init];
     self.friends = [NSMutableArray array];
+    self.friendsDictionary = [[NSMutableDictionary alloc] init];
     return self;
 }
 
@@ -24,11 +26,31 @@
     NSError* error;
     //error????
     NSArray* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-    for (NSDictionary *item in json) {
+    /*for (NSDictionary *item in json) {
         FriendModel *friend = [[FriendModel alloc] init];
         friend.email = item[@"email"];
         friend.name = item[@"name"];
         [self.friends addObject:friend];
+    }*/
+    FriendModel *friend = [[FriendModel alloc] init];
+    friend.email = @"nick@gmail.com";
+    friend.name = @"nick";
+    [self.friends addObject:friend];
+    FriendModel *friend2 = [[FriendModel alloc] init];
+    friend2.email = @"john@gmail.com";
+    friend2.name = @"John";
+    [self.friends addObject:friend2];
+    
+    //build dictionary
+    for (FriendModel *friend in self.friends) {
+        [self.friendsDictionary setValue:friend.name forKey:friend.email];
+    }
+    for (FriendModel *friend in self.friends) {
+        CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
+        CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
+        CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
+        UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+        [self.friendsColor setValue:color forKey:friend.email];
     }
 }
 

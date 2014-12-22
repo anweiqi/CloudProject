@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSMutableArray *feedList;
 - (void)getFeed:(NSString *)email;
 - (void)postFeed:(FeedModel *)feed;
+- (void)getAllFeeds;
 
 @property (nonatomic, strong) FriendListModel *friendList;
 

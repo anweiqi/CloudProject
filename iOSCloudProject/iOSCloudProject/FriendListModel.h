@@ -15,6 +15,8 @@
 - (void)addFriends:(NSString *)email;
 
 @property (nonatomic, strong) NSMutableArray *friends;
+@property (nonatomic, strong) NSMutableDictionary *friendsDictionary;
+@property (nonatomic, strong) NSMutableDictionary *friendsColor;
 @property (nonatomic, strong) NSString *me;
 
 @end

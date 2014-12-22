@@ -38,6 +38,7 @@
     emailTextField.keyboardType = UIKeyboardTypeDefault;
     emailTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     emailTextField.delegate = self.delegate;
+    
     [self addSubview:emailTextField];
     
     UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(62, 250, 250, 40)];
@@ -62,7 +63,7 @@
     loginButton.layer.borderColor = self.tintColor.CGColor;
     loginButton.layer.borderWidth=2.0f;
     [self addSubview:loginButton];
-    //[loginButton addTarget:self.delegate action:@selector(loginTapped)  forControlEvents:UIControlEventTouchUpInside];
+    [loginButton addTarget:self.delegate action:@selector(loginTapped)  forControlEvents:UIControlEventTouchUpInside];
     
     /*UIButton *signupButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     signupButton.frame = CGRectMake(62, 350, 250, 40);

@@ -11,5 +11,7 @@
 @interface FeedViewController : UITableViewController <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UISearchDisplayController *searchController;
+@property (strong, nonatomic) UISearchBar *searchBar;
+@property (strong, nonatomic) NSMutableArray *data;
 
 @end

@@ -16,6 +16,8 @@
 #import "MapViewController.h"
 #import "SettingViewController.h"
 #import "FavoriteViewController.h"
+#import "FriendListModel.h"
+#import "FeedListModel.h"
 
 @interface AppDelegate ()
 
@@ -85,6 +87,16 @@
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:feedNavigationController, mapNavigationController, favoriteNavigationController, settingNavigationController, nil];
     
     self.window.rootViewController = self.tabBarController;
+    
+    FriendListModel *friendlist = [[FriendListModel alloc] init];
+    friendlist.me = @"jiuyang.gmail.com";
+    [friendlist getFriends:friendlist.me];
+    FeedListModel *feedlist = [[FeedListModel alloc] init];
+    feedlist.friendList = friendlist;
+    [feedlist getAllFeeds];
+    feedViewController.data = feedlist.feedList;
+    mapViewController.data = feedlist.feedList;
+    
 }
 
 

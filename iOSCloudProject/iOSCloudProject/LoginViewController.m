@@ -47,7 +47,15 @@ static NSString * const kClientId = @"814816072679-6hfkd2q1n8b8slh21e0uie5ctgt0g
     // Dispose of any resources that can be recreated.
 }
 
+- (void) loginTapped: (NSString*) email password: (NSString*) password{
+    
+    NSLog(@"email!!!!!!!%@", self.emailTextField.text);
+    // If the session state is any of the two "open" states when the button is clicked
+}
+
 - (void) loginTapped{
+    
+    NSLog(@"email!!!!!!!%@", self.emailTextField.text);
     // If the session state is any of the two "open" states when the button is clicked
     if (FBSession.activeSession.state == FBSessionStateOpen
         || FBSession.activeSession.state == FBSessionStateOpenTokenExtended) {

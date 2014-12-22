@@ -11,5 +11,6 @@
 @interface MapViewController : UIViewController
 
 @property (strong, nonatomic) UISearchDisplayController *searchController;
+@property (strong, nonatomic) NSMutableArray *data;
 
 @end
