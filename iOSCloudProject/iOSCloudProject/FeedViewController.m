@@ -117,7 +117,7 @@
     
     //[cell.profileImageView setImage:[UIImage imageNamed:item[@"image"]]];
     cell.nameLabel.text = item.name;
-    cell.timeLabel.text = item.time;
+    cell.timeLabel.text = item.timeliteral;
     cell.content.text= item.content;
     
     //cell.imageView.image=[UIImage imageNamed:@"map_marker.png"];

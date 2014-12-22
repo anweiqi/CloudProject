@@ -8,10 +8,11 @@
 
 #import "FavoriteViewController.h"
 #import "FavoriteTableViewCell.h"
+#import "FriendModel.h"
 
 @interface FavoriteViewController ()
 
-@property (strong, nonatomic) NSArray *data;
+
 
 @end
 
@@ -85,7 +86,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"CellIdentifier";
-    NSDictionary *item = [self.data objectAtIndex:indexPath.row];
+    FriendModel *item = [self.data objectAtIndex:indexPath.row];
     
     // Dequeue or create a cell of the appropriate type.
     FavoriteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -94,9 +95,22 @@
         //cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    cell.profileImageView.image = [UIImage imageNamed:item[@"image"]];
-    cell.nameLabel.text = item[@"name"];
-    cell.placeLabel.text = item[@"place"];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSData *imageData = [NSData dataWithContentsOfURL:item.image];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Update the UI
+            [cell.profileImageView setImage:[UIImage imageWithData:imageData]];
+        });
+    });
+    
+    cell.nameLabel.text = item.name;
+    NSString *location = [self.friendlist.friendsLocation objectForKey:item.email];
+    NSString *time = [self.friendlist.friendsTime objectForKey:item.email];
+    NSString *locationtime = @"";
+    if (location != nil)
+        locationtime = [NSString stringWithFormat:@"%@ / %@", location, time];
+    cell.placeLabel.text = locationtime;
     
     // Configure the cell.
     //cell.textLabel.text = [NSString stringWithFormat:@"Row %d: %@", indexPath.row, [_data objectAtIndex:indexPath.row]];

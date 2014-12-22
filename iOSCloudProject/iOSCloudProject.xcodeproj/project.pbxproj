@@ -16,6 +16,7 @@
 		3839EF5A1A43C54000F3315C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF591A43C54000F3315C /* libz.dylib */; };
 		3839EF5C1A43C54D00F3315C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF5B1A43C54D00F3315C /* OpenGLES.framework */; };
 		3839EF5E1A43C55700F3315C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF5D1A43C55700F3315C /* QuartzCore.framework */; };
+		385997041A488D6B00C2AB3B /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 385997031A488D6B00C2AB3B /* UserModel.m */; };
 		386EEEB61A462F9F00AC98DA /* FeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEB51A462F9F00AC98DA /* FeedModel.m */; };
 		386EEEB91A4635AC00AC98DA /* FriendListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEB81A4635AC00AC98DA /* FriendListModel.m */; };
 		386EEEBC1A4638F100AC98DA /* FriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEBB1A4638F100AC98DA /* FriendModel.m */; };
@@ -90,6 +91,8 @@
 		3839EF591A43C54000F3315C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3839EF5B1A43C54D00F3315C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		3839EF5D1A43C55700F3315C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		385997021A488D6B00C2AB3B /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		385997031A488D6B00C2AB3B /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		386EEEB41A462F9F00AC98DA /* FeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedModel.h; sourceTree = "<group>"; };
 		386EEEB51A462F9F00AC98DA /* FeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedModel.m; sourceTree = "<group>"; };
 		386EEEB71A4635AC00AC98DA /* FriendListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListModel.h; sourceTree = "<group>"; };
@@ -299,6 +302,8 @@
 				386EEEB81A4635AC00AC98DA /* FriendListModel.m */,
 				386EEEBA1A4638F100AC98DA /* FriendModel.h */,
 				386EEEBB1A4638F100AC98DA /* FriendModel.m */,
+				385997021A488D6B00C2AB3B /* UserModel.h */,
+				385997031A488D6B00C2AB3B /* UserModel.m */,
 				386EEEC01A46624200AC98DA /* Models.h */,
 				386EEEC11A46624200AC98DA /* Models.m */,
 				3EE8BD7C1A155B730056E6BE /* Images.xcassets */,
@@ -492,6 +497,7 @@
 				386EEEB61A462F9F00AC98DA /* FeedModel.m in Sources */,
 				386EEEBF1A463C3C00AC98DA /* FeedListModel.m in Sources */,
 				3E435A3D1A1723C8009B77BC /* FeedTableViewCell.m in Sources */,
+				385997041A488D6B00C2AB3B /* UserModel.m in Sources */,
 				3E3AB88C1A1839F100CE0253 /* FavoriteTableViewCell.m in Sources */,
 				386EEEB91A4635AC00AC98DA /* FriendListModel.m in Sources */,
 				386EEEC21A46624200AC98DA /* Models.m in Sources */,

@@ -15,6 +15,10 @@
     self = [super init];
     self.friends = [NSMutableArray array];
     self.friendsDictionary = [[NSMutableDictionary alloc] init];
+    self.friendsColor = [[NSMutableDictionary alloc] init];
+    self.friendsImage = [[NSMutableDictionary alloc] init];
+    self.friendsLocation = [[NSMutableDictionary alloc] init];
+    self.friendsTime = [[NSMutableDictionary alloc] init];
     return self;
 }
 
@@ -40,6 +44,7 @@
     friend2.email = @"john@gmail.com";
     friend2.name = @"John";
     [self.friends addObject:friend2];
+    FriendModel *friendme = [[FriendModel alloc] init];
     
     //build dictionary
     for (FriendModel *friend in self.friends) {
@@ -52,6 +57,16 @@
         UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
         [self.friendsColor setValue:color forKey:friend.email];
     }
+    
+    for (FriendModel *friend in self.friends) {
+        NSString* imageUrl = [NSString stringWithFormat:@"%@/getUserPic/%@.jpg", self.ipAddress , friend.email];
+        NSData* imageUrlData = [self getDataFrom: imageUrl];
+        NSString* imageS3String = [[NSString alloc] initWithData:imageUrlData encoding:NSUTF8StringEncoding];
+        NSURL *imageS3Url = [NSURL URLWithString:imageS3String];
+        friend.image = imageS3Url;
+        [self.friendsImage setValue:imageS3Url forKey:friend.email];
+    }
+    NSLog(@"THis is imagediction!!!%@", self.friendsImage);
 }
 
 - (void)addFriends:(NSString *)email {

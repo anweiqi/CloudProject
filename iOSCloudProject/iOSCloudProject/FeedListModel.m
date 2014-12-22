@@ -19,26 +19,94 @@
 - (void)getFeed:(NSString *)email {
     
     NSString* textUrl = [NSString stringWithFormat:@"%@/checkin?email=%@", self.ipAddress , email];
-    NSString* imageUrl = [NSString stringWithFormat:@"%@/getUserPic/%@.jpg", self.ipAddress , email];
     NSData* textData = [self getDataFrom: textUrl];
-    NSData* imageUrlData = [self getDataFrom: imageUrl];
-    NSString* imageS3String = [[NSString alloc] initWithData:imageUrlData encoding:NSUTF8StringEncoding];
-    NSLog(@"This is url!!!!%@", imageS3String);
-    NSURL *imageS3Url = [NSURL URLWithString:imageS3String];
     NSError* error;
 //error????
     NSArray* json = [NSJSONSerialization JSONObjectWithData:textData options:kNilOptions error:&error];
     
     for (NSDictionary *item in json) {
         FeedModel *feed = [[FeedModel alloc] init];
+        feed.email = email;
         feed.name = self.friendList.friendsDictionary[item[@"email"]];
         feed.color = self.friendList.friendsColor[item[@"email"]];
+        feed.imageUrl = self.friendList.friendsImage[item[@"email"]];
+        feed.locationliteral = @"Here";
+        NSLog(@"THis is color!!!%@", [feed.color description]);
         feed.time = item[@"time"];
+        NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
+        long currentTime = secondsSinceUnixEpoch;
+        NSLog(@"Currenttime is %li!!!!!!!", currentTime);
+        long feedTime = [item[@"time"] longLongValue]/1000;
+        NSLog(@"Feedtime is %li!!!!!!!", feedTime);
+        long time = currentTime - feedTime;
+        NSLog(@"time is %li!!!!!!!", time);
+        if (time < 60) {
+            feed.timeliteral = [NSString stringWithFormat:@"%li sec", time];
+        } else {
+            time = time / 60;
+            if (time < 60) {
+                feed.timeliteral = [NSString stringWithFormat:@"%li min", time];
+            } else {
+                time = time / 60;
+                if(time < 24) {
+                    feed.timeliteral = [NSString stringWithFormat:@"%li hr", time];
+                } else {
+                    time = time / 24;
+                    feed.timeliteral = [NSString stringWithFormat:@"%li days", time];
+                }
+            }
+        }
         feed.content = item[@"text"];
-        feed.imageUrl = imageS3Url;
         feed.latitude = [item[@"latitude"] doubleValue];
         feed.longitude = [item[@"longitude"] doubleValue];
-        NSLog(@"This is position %f and %f, %s and %s", feed.latitude, feed.longitude, item[@"latitude"], item[@"longitude"]);
+        [self.feedList addObject:feed];
+    }
+    
+}
+
+- (void)getMyFeed:(NSString *)email {
+    
+    NSString* textUrl = [NSString stringWithFormat:@"%@/checkin?email=%@", self.ipAddress , email];
+    NSData* textData = [self getDataFrom: textUrl];
+    NSError* error;
+    //error????
+    NSArray* json = [NSJSONSerialization JSONObjectWithData:textData options:kNilOptions error:&error];
+    
+    for (NSDictionary *item in json) {
+        FeedModel *feed = [[FeedModel alloc] init];
+        feed.email = email;
+        feed.name = self.user.name;
+        feed.color = self.user.color;
+        feed.imageUrl = self.user.imageUrl;
+        feed.locationliteral = @"Here";
+        NSLog(@"THis is color!!!%@", [feed.color description]);
+        feed.time = item[@"time"];
+        NSTimeInterval secondsSinceUnixEpoch = [[NSDate date]timeIntervalSince1970];
+        long currentTime = secondsSinceUnixEpoch;
+        NSLog(@"Currenttime is %li!!!!!!!", currentTime);
+        long feedTime = [item[@"time"] longLongValue]/1000;
+        NSLog(@"Feedtime is %li!!!!!!!", feedTime);
+        long time = currentTime - feedTime;
+        NSLog(@"time is %li!!!!!!!", time);
+        if (time < 60) {
+            feed.timeliteral = [NSString stringWithFormat:@"%li sec", time];
+        } else {
+            time = time / 60;
+            if (time < 60) {
+                feed.timeliteral = [NSString stringWithFormat:@"%li min", time];
+            } else {
+                time = time / 60;
+                if(time < 24) {
+                    feed.timeliteral = [NSString stringWithFormat:@"%li hr", time];
+                } else {
+                    time = time / 24;
+                    feed.timeliteral = [NSString stringWithFormat:@"%li days", time];
+                }
+            }
+        }
+        feed.content = item[@"text"];
+        feed.latitude = [item[@"latitude"] doubleValue];
+        feed.longitude = [item[@"longitude"] doubleValue];
         [self.feedList addObject:feed];
     }
     
@@ -48,6 +116,8 @@
     for (FriendModel *friend in self.friendList.friends) {
         [self getFeed:friend.email];
     }
+    
+    [self getMyFeed:self.friendList.me];
 
     NSMutableArray *sortedArray = [[self.feedList sortedArrayUsingComparator:^NSComparisonResult(FeedModel *f1, FeedModel *f2){
         
@@ -55,6 +125,14 @@
         
     }] mutableCopy];
     self.feedList = sortedArray;
+    
+    for (FeedModel *feed in self.feedList) {
+        NSString *location = [self.friendList.friendsLocation objectForKey:feed.email];
+        if (location == nil) {
+            [self.friendList.friendsLocation setValue:feed.locationliteral forKey:feed.email];
+            [self.friendList.friendsTime setValue:feed.timeliteral forKey:feed.email];
+        }
+    }
     
 }
 
