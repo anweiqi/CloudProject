@@ -61,6 +61,7 @@ NSDictionary* currentUser;
         latitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
         [_composerView.locationLabel setText:[NSString stringWithFormat:@"%@, %@", latitude, longitude]];
         [locationManager stopUpdatingLocation];
+        [self post];
     }
 }
 
@@ -87,6 +88,8 @@ NSDictionary* currentUser;
     }
     components.queryItems = queryItems;
     NSURL *url = components.URL;
+    
+    NSLog(@"%@",url);
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"POST"];
