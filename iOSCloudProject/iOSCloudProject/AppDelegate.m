@@ -18,6 +18,7 @@
 #import "FavoriteViewController.h"
 #import "FriendListModel.h"
 #import "FeedListModel.h"
+#import "UserModel.h"
 
 @interface AppDelegate ()
 
@@ -92,13 +93,22 @@
     self.window.rootViewController = self.tabBarController;
     
     FriendListModel *friendlist = [[FriendListModel alloc] init];
-    friendlist.me = @"jiuyang.gmail.com";
+    friendlist.me = @"jiuyang@gmail.com";
     [friendlist getFriends:friendlist.me];
+    
+    UserModel *user = [[UserModel alloc] init];
+    [user getUser:friendlist.me];
+    
     FeedListModel *feedlist = [[FeedListModel alloc] init];
     feedlist.friendList = friendlist;
+    feedlist.user = user;
     [feedlist getAllFeeds];
     feedViewController.data = feedlist.feedList;
+    feedViewController.feedList = feedlist;
     mapViewController.data = feedlist.feedList;
+    favoriteViewController.data = friendlist.friends;
+    favoriteViewController.friendlist = friendlist;
+    settingViewController.user = user;
     
 }
 

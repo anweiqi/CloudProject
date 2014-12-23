@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FriendListModel.h"
 
 @interface FavoriteViewController : UITableViewController
 
+@property (strong, nonatomic) NSMutableArray *data;
 @property (strong, nonatomic) UISearchDisplayController *searchController;
+@property (strong, nonatomic) FriendListModel *friendlist;
 
 @end

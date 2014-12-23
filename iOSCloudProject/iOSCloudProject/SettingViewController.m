@@ -7,6 +7,7 @@
 //
 
 #import "SettingViewController.h"
+#import "SettingTableViewCell.h"
 
 @interface SettingViewController ()
 
@@ -39,9 +40,9 @@
 
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return 4;
+        return 1;
     } else {
-        return 4;
+        return 2;
     }
 }
 
@@ -58,7 +59,7 @@
     }
     if (section == 1)
     {
-        return @"Social Accounts";
+        return @"Account Information";
     }
     return @"";
 }
@@ -67,17 +68,46 @@
     
     static NSString *CellIdentifier = @"CellIdentifier";
     
-    // Dequeue or create a cell of the appropriate type.
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] init];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        //cell.accessoryType = UITableViewCellAccessoryNone;
+    if (indexPath.section == 0) {
+        
+        // Dequeue or create a cell of the appropriate type.
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] init];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            //cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        
+        // Configure the cell.
+        //cell.textLabel.text = [NSString stringWithFormat:@"Row %d: %@", indexPath.row, [_data objectAtIndex:indexPath.row]];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            NSData *imageData = [NSData dataWithContentsOfURL:self.user.imageUrl];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Update the UI
+                cell.imageView.image = [UIImage imageWithData:imageData];
+            });
+        });
+        cell.textLabel.text = self.user.email;
+        
+        return cell;
+    } else
+    {
+        SettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[SettingTableViewCell alloc] init];
+            //cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        
+        if (indexPath.row == 0) {
+            cell.field.text = @"Full Name:";
+            cell.content.text = self.user.name;
+        } else if (indexPath.row == 1) {
+            cell.field.text = @"password:";
+            cell.content.text = @"********";
+        }
+        return cell;
     }
-    
-    // Configure the cell.
-    //cell.textLabel.text = [NSString stringWithFormat:@"Row %d: %@", indexPath.row, [_data objectAtIndex:indexPath.row]];
-    return cell;
 }
 
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		383328751A48CDBB00CE0036 /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 383328741A48CDBB00CE0036 /* SettingTableViewCell.m */; };
 		3839EF4E1A43C4EF00F3315C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF4D1A43C4EF00F3315C /* AVFoundation.framework */; };
 		3839EF501A43C4FE00F3315C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF4F1A43C4FE00F3315C /* CoreData.framework */; };
 		3839EF521A43C51000F3315C /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF511A43C51000F3315C /* GLKit.framework */; };
@@ -16,6 +17,7 @@
 		3839EF5A1A43C54000F3315C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF591A43C54000F3315C /* libz.dylib */; };
 		3839EF5C1A43C54D00F3315C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF5B1A43C54D00F3315C /* OpenGLES.framework */; };
 		3839EF5E1A43C55700F3315C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF5D1A43C55700F3315C /* QuartzCore.framework */; };
+		385997041A488D6B00C2AB3B /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 385997031A488D6B00C2AB3B /* UserModel.m */; };
 		386EEEB61A462F9F00AC98DA /* FeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEB51A462F9F00AC98DA /* FeedModel.m */; };
 		386EEEB91A4635AC00AC98DA /* FriendListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEB81A4635AC00AC98DA /* FriendListModel.m */; };
 		386EEEBC1A4638F100AC98DA /* FriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEBB1A4638F100AC98DA /* FriendModel.m */; };
@@ -85,6 +87,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		383328731A48CDBB00CE0036 /* SettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewCell.h; sourceTree = "<group>"; };
+		383328741A48CDBB00CE0036 /* SettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
 		3839EF4D1A43C4EF00F3315C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3839EF4F1A43C4FE00F3315C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3839EF511A43C51000F3315C /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -94,6 +98,8 @@
 		3839EF591A43C54000F3315C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3839EF5B1A43C54D00F3315C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		3839EF5D1A43C55700F3315C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		385997021A488D6B00C2AB3B /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		385997031A488D6B00C2AB3B /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		386EEEB41A462F9F00AC98DA /* FeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedModel.h; sourceTree = "<group>"; };
 		386EEEB51A462F9F00AC98DA /* FeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedModel.m; sourceTree = "<group>"; };
 		386EEEB71A4635AC00AC98DA /* FriendListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListModel.h; sourceTree = "<group>"; };
@@ -295,11 +301,13 @@
 				3E4FFA0A1A487C9400020702 /* ComposerViewController.h */,
 				3E4FFA0B1A487C9400020702 /* ComposerViewController.m */,
 				3E3AB88B1A1839F100CE0253 /* FavoriteTableViewCell.m */,
-				3E8451571A104D4C00D7659A /* LoginViewController.m */,
+				383328731A48CDBB00CE0036 /* SettingTableViewCell.h */,
+				383328741A48CDBB00CE0036 /* SettingTableViewCell.m */,
 				3E337CE01A48C92200EC77B8 /* SignUpViewController.h */,
 				3E337CE11A48C92200EC77B8 /* SignUpViewController.m */,
 				3E337CE31A491B3D00EC77B8 /* UserSession.h */,
 				3E337CE41A491B3D00EC77B8 /* UserSession.m */,
+				3E8451571A104D4C00D7659A /* LoginViewController.m */,
 				3E8451561A104D4C00D7659A /* LoginViewController.h */,
 				3EE8BD851A159C4C0056E6BE /* FeedViewController.h */,
 				3EE8BD861A159C4C0056E6BE /* FeedViewController.m */,
@@ -317,6 +325,8 @@
 				386EEEB81A4635AC00AC98DA /* FriendListModel.m */,
 				386EEEBA1A4638F100AC98DA /* FriendModel.h */,
 				386EEEBB1A4638F100AC98DA /* FriendModel.m */,
+				385997021A488D6B00C2AB3B /* UserModel.h */,
+				385997031A488D6B00C2AB3B /* UserModel.m */,
 				386EEEC01A46624200AC98DA /* Models.h */,
 				386EEEC11A46624200AC98DA /* Models.m */,
 				3EE8BD7C1A155B730056E6BE /* Images.xcassets */,
@@ -512,9 +522,11 @@
 				386EEEB61A462F9F00AC98DA /* FeedModel.m in Sources */,
 				386EEEBF1A463C3C00AC98DA /* FeedListModel.m in Sources */,
 				3E435A3D1A1723C8009B77BC /* FeedTableViewCell.m in Sources */,
+				385997041A488D6B00C2AB3B /* UserModel.m in Sources */,
 				3E3AB88C1A1839F100CE0253 /* FavoriteTableViewCell.m in Sources */,
 				3E337CE21A48C92200EC77B8 /* SignUpViewController.m in Sources */,
 				386EEEB91A4635AC00AC98DA /* FriendListModel.m in Sources */,
+				383328751A48CDBB00CE0036 /* SettingTableViewCell.m in Sources */,
 				3E4FFA0C1A487C9400020702 /* ComposerView.m in Sources */,
 				3E4FFA0D1A487C9400020702 /* ComposerViewController.m in Sources */,
 				386EEEC21A46624200AC98DA /* Models.m in Sources */,

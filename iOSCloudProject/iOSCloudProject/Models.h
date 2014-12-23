@@ -16,4 +16,6 @@
 
 - (void) postDataTo:(NSString *)url data:(NSData *)postData;
 
+- (void) deleteData:(NSString *)url;
+
 @end

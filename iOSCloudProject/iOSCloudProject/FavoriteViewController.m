@@ -8,10 +8,11 @@
 
 #import "FavoriteViewController.h"
 #import "FavoriteTableViewCell.h"
+#import "FriendModel.h"
 
 @interface FavoriteViewController ()
 
-@property (strong, nonatomic) NSArray *data;
+
 
 @end
 
@@ -23,26 +24,6 @@
         self.title = NSLocalizedString(@"Special List", @"Favorites");
         self.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:1];
         
-        self.data = @[[[NSDictionary alloc] initWithObjectsAndKeys:
-                       @"Nick DeGiacomo", @"name",
-                       @"nick.jpg", @"image",
-                       @"Columbia University / 5 mins", @"place",
-                       nil],
-                      [[NSDictionary alloc] initWithObjectsAndKeys:
-                       @"John Chaiyasarikul", @"name",
-                       @"john.jpg", @"image",
-                       @"New York, NY / 20 mins", @"place",
-                       nil],
-                      [[NSDictionary alloc] initWithObjectsAndKeys:
-                       @"Jiuyang Zhao", @"name",
-                       @"jiuyang.jpg", @"image",
-                       @"Empire State Building / 1 day", @"place",
-                       nil],
-                      [[NSDictionary alloc] initWithObjectsAndKeys:
-                       @"Cety Yao Tu", @"name",
-                       @"yao.jpg", @"image",
-                       @"New York, NY / 2 hrs", @"place",
-                       nil]];
         //[UIImage imageNamed:@"settings.png"];
     }
     return self;
@@ -61,6 +42,8 @@
     self.searchController.searchResultsDelegate = self;
     //[self.tableView setContentOffset:CGPointMake(0,44) animated:YES];
     self.tableView.tableHeaderView = searchBar;
+    
+    self.tableView.allowsMultipleSelectionDuringEditing = NO;
 
 }
 
@@ -79,13 +62,15 @@
 }
 
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"count");
     return self.data.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    NSLog(@"cell");
+
     static NSString *CellIdentifier = @"CellIdentifier";
-    NSDictionary *item = [self.data objectAtIndex:indexPath.row];
+    FriendModel *item = [self.data objectAtIndex:indexPath.row];
     
     // Dequeue or create a cell of the appropriate type.
     FavoriteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -94,13 +79,51 @@
         //cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    cell.profileImageView.image = [UIImage imageNamed:item[@"image"]];
-    cell.nameLabel.text = item[@"name"];
-    cell.placeLabel.text = item[@"place"];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSData *imageData = [NSData dataWithContentsOfURL:item.image];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Update the UI
+            [cell.profileImageView setImage:[UIImage imageWithData:imageData]];
+        });
+    });
+    
+    cell.nameLabel.text = item.name;
+    NSString *location = [self.friendlist.friendsLocation objectForKey:item.email];
+    NSString *time = [self.friendlist.friendsTime objectForKey:item.email];
+    NSString *locationtime = @"";
+    if (location != nil)
+        locationtime = [NSString stringWithFormat:@"%@ / %@", location, time];
+    cell.placeLabel.text = locationtime;
     
     // Configure the cell.
     //cell.textLabel.text = [NSString stringWithFormat:@"Row %d: %@", indexPath.row, [_data objectAtIndex:indexPath.row]];
     return cell;
 }
+
+// Override to support conditional editing of the table view.
+// This only needs to be implemented if you are going to be returning NO
+// for some items. By default, all items are editable.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //add code here for when you hit delete
+        FriendModel *friend = [self.data objectAtIndex:indexPath.row];
+        [self.data removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.friendlist deleteFriends:friend.email];
+    }
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+
 
 @end
