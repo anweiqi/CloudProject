@@ -59,7 +59,7 @@ static NSString * const kClientId = @"814816072679-6hfkd2q1n8b8slh21e0uie5ctgt0g
     NSLog(@"%@",_loginView.emailTextField.text);
     NSLog(@"The PW is !!!%@", _loginView.passwordTextField.text);
     
-    NSURLComponents *components = [NSURLComponents componentsWithString:@"http://160.39.221.6:2015/login"];
+    NSURLComponents *components = [NSURLComponents componentsWithString:@"http://localhost:2015/login"];
     NSDictionary *queryDictionary = @{ @"email": _loginView.emailTextField.text, @"password": _loginView.passwordTextField.text};
     
     NSMutableArray *queryItems = [NSMutableArray array];

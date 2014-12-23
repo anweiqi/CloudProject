@@ -13,12 +13,14 @@ exports.login= function(req, res) {
         if(error){
             console.log(error);
             res.status(403).send('Incorrect email/password');
-        }else{
+        }else if (result.length){
             if(result[0].password == params.password){
                 res.send(result[0]);
             }else{
                 res.status(403).send('Incorrect email/password');
             }
+        }else{
+             res.status(403).send('No Such User');
         }
     });
 };
