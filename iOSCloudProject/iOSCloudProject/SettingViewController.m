@@ -86,15 +86,12 @@ NSDictionary * currentUser;
 
 - (void)logOut{
     
-    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-    [appDelegate userloggedOut];
-//    
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-//                                                    message:@"Error Setting Name"
-//                                                   delegate:self
-//                                          cancelButtonTitle:@"OK"
-//                                          otherButtonTitles:nil];
-//    [alert show];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning"
+                                                    message:@"Are you sure to log out?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Log Out", nil];
+    [alert show];
     
 }
 
@@ -178,14 +175,11 @@ NSDictionary * currentUser;
     }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+        [appDelegate userloggedOut];
+    }
 }
-*/
 
 @end

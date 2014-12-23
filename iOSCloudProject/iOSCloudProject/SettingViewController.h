@@ -11,7 +11,7 @@
 #import "UserModel.h"
 #import "SettingNameViewControllerTableViewController.h"
 
-@interface SettingViewController : UITableViewController
+@interface SettingViewController : UITableViewController <UIAlertViewDelegate>
 
 @property (nonatomic, strong) UserModel *user;
 
