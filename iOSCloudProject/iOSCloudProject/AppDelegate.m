@@ -122,6 +122,9 @@
     self.window.rootViewController = rootNavigationController;
 }
 
+-(void) createFB {
+    
+}
 
 // This method will handle ALL the session state changes in the app
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error
@@ -135,6 +138,8 @@
         //_accessTokenData = FBSession.accessTokenData;
         FBAccessTokenData *fbAccessToken = [[FBSession activeSession] accessTokenData];
         NSLog(@"%@",fbAccessToken);
+        
+        //[self createFB];
         
         //NSString *post = [NSString stringWithFormat:@"Username=%@&Password=%@",@"username",@"password"];
         

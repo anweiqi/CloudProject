@@ -24,6 +24,8 @@
 
 @implementation FeedViewController
 
+BOOL isSearching;
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -33,6 +35,7 @@
                                       initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
                                       target:self action:@selector(addButtonPressed)];
         self.navigationItem.rightBarButtonItem = addButton;
+        isSearching = NO;
         
 //        FriendListModel *friendList = [[FriendListModel alloc] init];
 //        friendList.me = @"weiqian.pku@gmail.com";
@@ -66,6 +69,7 @@
     self.searchController.searchResultsDataSource = self;
     self.searchController.searchResultsDelegate = self;
     self.searchController.delegate = self;
+    self.searchBar.delegate = self;
     //[self.tableView setContentOffset:CGPointMake(0,44) animated:YES];
     self.tableView.tableHeaderView = self.searchBar;
     
@@ -134,13 +138,26 @@
 }
 
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
-    return self.data.count;
+    //return self.data.count;
+    if (isSearching) {
+        return [self.filteredData count];
+    }
+    else {
+        return [self.data count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"CellIdentifier";
-    FeedModel *item = [self.data objectAtIndex:indexPath.row];
+    FeedModel *item;
+    
+    if (isSearching) {
+        item = [self.filteredData objectAtIndex:indexPath.row];
+    }
+    else {
+        item = [self.data objectAtIndex:indexPath.row];
+    }
     
     // Dequeue or create a cell of the appropriate type.
     FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -180,27 +197,26 @@
         NSString *tempStr = feed.name;
         NSComparisonResult result = [tempStr compare:searchString options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchString length])];
         if (result == NSOrderedSame) {
-            [self.filteredData addObject:tempStr];
+            [self.filteredData addObject:feed];
         }
     }
 }
 
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    //self.isSearching = YES;
-}
+//- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+//    isSearching = YES;
+//}
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    //NSLog(@"Text change - %d",self.isSearching);
     
     //Remove all objects first.
     [self.filteredData removeAllObjects];
     
     if([searchText length] != 0) {
-        //self.isSearching = YES;
+        isSearching = YES;
         [self searchTableList];
     }
     else {
-        //self.isSearching = NO;
+        isSearching = NO;
     }
     [self.tableView reloadData];
 }
