@@ -101,9 +101,11 @@
     feedlist.user = user;
     [feedlist getAllFeeds];
     feedViewController.data = feedlist.feedList;
+    feedViewController.feedList = feedlist;
     mapViewController.data = feedlist.feedList;
     favoriteViewController.data = friendlist.friends;
     favoriteViewController.friendlist = friendlist;
+    settingViewController.user = user;
     
 }
 

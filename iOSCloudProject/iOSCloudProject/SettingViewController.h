@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "UserModel.h"
 
 @interface SettingViewController : UITableViewController
+
+@property (nonatomic, strong) UserModel *user;
 
 @end

@@ -74,4 +74,9 @@
     [self postDataTo:url data: [[NSData alloc] init]];
 }
 
+- (void)deleteFriends:(NSString *)email {
+    NSString* url = [NSString stringWithFormat:@"%@/follow?email=%@&follower=%@", self.ipAddress , self.me, email];
+    [self deleteData:url];
+}
+
 @end

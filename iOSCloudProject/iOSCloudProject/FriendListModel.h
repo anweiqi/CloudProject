@@ -13,6 +13,7 @@
 
 - (void)getFriends:(NSString *)email;
 - (void)addFriends:(NSString *)email;
+- (void)deleteFriends:(NSString *)email;
 
 @property (nonatomic, strong) NSMutableArray *friends;
 @property (nonatomic, strong) NSMutableDictionary *friendsDictionary;

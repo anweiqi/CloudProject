@@ -12,7 +12,6 @@
 @implementation FeedListModel
 - (id) init {
     self = [super init];
-    self.feedList = [NSMutableArray array];
     return self;
 }
 
@@ -113,6 +112,8 @@
 }
 
 - (void)getAllFeeds {
+    self.feedList = [NSMutableArray array];
+    
     for (FriendModel *friend in self.friendList.friends) {
         [self getFeed:friend.email];
     }

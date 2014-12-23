@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		383328751A48CDBB00CE0036 /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 383328741A48CDBB00CE0036 /* SettingTableViewCell.m */; };
 		3839EF4E1A43C4EF00F3315C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF4D1A43C4EF00F3315C /* AVFoundation.framework */; };
 		3839EF501A43C4FE00F3315C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF4F1A43C4FE00F3315C /* CoreData.framework */; };
 		3839EF521A43C51000F3315C /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3839EF511A43C51000F3315C /* GLKit.framework */; };
@@ -82,6 +83,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		383328731A48CDBB00CE0036 /* SettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewCell.h; sourceTree = "<group>"; };
+		383328741A48CDBB00CE0036 /* SettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
 		3839EF4D1A43C4EF00F3315C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3839EF4F1A43C4FE00F3315C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3839EF511A43C51000F3315C /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -284,6 +287,8 @@
 				3E435A3C1A1723C8009B77BC /* FeedTableViewCell.m */,
 				3E3AB88A1A1839F100CE0253 /* FavoriteTableViewCell.h */,
 				3E3AB88B1A1839F100CE0253 /* FavoriteTableViewCell.m */,
+				383328731A48CDBB00CE0036 /* SettingTableViewCell.h */,
+				383328741A48CDBB00CE0036 /* SettingTableViewCell.m */,
 				3E8451571A104D4C00D7659A /* LoginViewController.m */,
 				3E8451561A104D4C00D7659A /* LoginViewController.h */,
 				3EE8BD851A159C4C0056E6BE /* FeedViewController.h */,
@@ -500,6 +505,7 @@
 				385997041A488D6B00C2AB3B /* UserModel.m in Sources */,
 				3E3AB88C1A1839F100CE0253 /* FavoriteTableViewCell.m in Sources */,
 				386EEEB91A4635AC00AC98DA /* FriendListModel.m in Sources */,
+				383328751A48CDBB00CE0036 /* SettingTableViewCell.m in Sources */,
 				386EEEC21A46624200AC98DA /* Models.m in Sources */,
 				3E8451311A101B5200D7659A /* main.m in Sources */,
 				3E84515B1A1059DE00D7659A /* LoginView.m in Sources */,
