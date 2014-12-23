@@ -15,7 +15,7 @@ exports.login= function(req, res) {
             res.status(403).send('Incorrect email/password');
         }else{
             if(result[0].password == params.password){
-                res.send({error:0});
+                res.send(result[0]);
             }else{
                 res.status(403).send('Incorrect email/password');
             }
@@ -25,12 +25,21 @@ exports.login= function(req, res) {
 
 exports.add_user= function(req, res) {
     var params = url.parse(req.url, true).query;
-    sdb.putItem('userinfo', params.email, {password:params.password, name:params.name}, function( error ) {
+    sdb.select("select * from userinfo where itemName() = '" + params.email + "'", function( error, result, meta ){
         if(error){
-            res.status(404).end();
+            res.status(404).send('Unknown Error');
             console.log(error);
+        }else if(result.length){
+            res.status(403).send('User exists');
         }else{
-            res.send({error:0});
+            sdb.putItem('userinfo', params.email, {password:params.password, name:params.name}, function( error ) {
+                if(error){
+                    res.status(404).send('Unknown Error');
+                    console.log(error);
+                }else{
+                    res.send({error:0});
+                }
+            });
         }
     });
 };

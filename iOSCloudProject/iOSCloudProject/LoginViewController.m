@@ -49,13 +49,6 @@ static NSString * const kClientId = @"814816072679-6hfkd2q1n8b8slh21e0uie5ctgt0g
     }
 }
 
-- (void) storeUser{
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults setObject:userNameText forKey:@"username"];
-//    [defaults setObject:passWordText forKey:@"password"];
-//    [defaults synchronize];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

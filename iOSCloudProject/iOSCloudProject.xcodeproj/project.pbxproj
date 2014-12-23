@@ -22,6 +22,7 @@
 		386EEEBF1A463C3C00AC98DA /* FeedListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEBE1A463C3C00AC98DA /* FeedListModel.m */; };
 		386EEEC21A46624200AC98DA /* Models.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEC11A46624200AC98DA /* Models.m */; };
 		3E337CE21A48C92200EC77B8 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E337CE11A48C92200EC77B8 /* SignUpViewController.m */; };
+		3E337CE51A491B3D00EC77B8 /* UserSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E337CE41A491B3D00EC77B8 /* UserSession.m */; };
 		3E3AB8871A1835F000CE0253 /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB8861A1835F000CE0253 /* facebook_icon.png */; };
 		3E3AB8891A1835FD00CE0253 /* twitter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB8881A1835FD00CE0253 /* twitter_icon.png */; };
 		3E3AB88C1A1839F100CE0253 /* FavoriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3AB88B1A1839F100CE0253 /* FavoriteTableViewCell.m */; };
@@ -105,6 +106,8 @@
 		386EEEC11A46624200AC98DA /* Models.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Models.m; sourceTree = "<group>"; };
 		3E337CE01A48C92200EC77B8 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		3E337CE11A48C92200EC77B8 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		3E337CE31A491B3D00EC77B8 /* UserSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSession.h; sourceTree = "<group>"; };
+		3E337CE41A491B3D00EC77B8 /* UserSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSession.m; sourceTree = "<group>"; };
 		3E3AB8861A1835F000CE0253 /* facebook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook_icon.png; path = Images.xcassets/facebook_icon.png; sourceTree = "<group>"; };
 		3E3AB8881A1835FD00CE0253 /* twitter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter_icon.png; path = Images.xcassets/twitter_icon.png; sourceTree = "<group>"; };
 		3E3AB88A1A1839F100CE0253 /* FavoriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTableViewCell.h; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 				3E8451571A104D4C00D7659A /* LoginViewController.m */,
 				3E337CE01A48C92200EC77B8 /* SignUpViewController.h */,
 				3E337CE11A48C92200EC77B8 /* SignUpViewController.m */,
+				3E337CE31A491B3D00EC77B8 /* UserSession.h */,
+				3E337CE41A491B3D00EC77B8 /* UserSession.m */,
 				3E8451561A104D4C00D7659A /* LoginViewController.h */,
 				3EE8BD851A159C4C0056E6BE /* FeedViewController.h */,
 				3EE8BD861A159C4C0056E6BE /* FeedViewController.m */,
@@ -521,6 +526,7 @@
 				3EE8BD8A1A159C5A0056E6BE /* MapViewController.m in Sources */,
 				3EE8BD8D1A159C810056E6BE /* SettingViewController.m in Sources */,
 				386EEEBC1A4638F100AC98DA /* FriendModel.m in Sources */,
+				3E337CE51A491B3D00EC77B8 /* UserSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

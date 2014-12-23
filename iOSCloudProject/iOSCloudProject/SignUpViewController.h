@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignUpViewController : UITableViewController <NSURLConnectionDelegate>
+@interface SignUpViewController : UITableViewController <UIAlertViewDelegate>
 
 @end
