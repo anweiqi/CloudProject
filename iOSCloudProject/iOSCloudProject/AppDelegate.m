@@ -50,8 +50,11 @@
                                           [appDelegate sessionStateChanged:session state:state error:error];
                                       }];
     } else {*/
+    
         LoginViewController *loginViewController = [[LoginViewController alloc] init];
-        self.window.rootViewController = loginViewController;
+    UINavigationController *rootNavigationController = [[UINavigationController alloc] init];
+    [rootNavigationController setViewControllers:[NSArray arrayWithObjects:loginViewController, nil]];
+        self.window.rootViewController = rootNavigationController;
     //}
     
     return YES;
