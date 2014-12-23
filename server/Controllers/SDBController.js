@@ -136,7 +136,22 @@ exports.get_follow = function(req,res) {
             res.status(404).send('Not found');
         }else{
             console.log(result);
-            res.send(result);
+            var arrayResult = result[0].followList.split(",");
+            var query = "select email, name from userinfo where itemName() = ";
+            for(i=0; i<arrayResult.length-1;i++){
+                query = query + "'" + arrayResult[i] + "' or itemName() =" ;
+            }
+            query = query +  "'" + arrayResult[i] + "'";
+            sdb.select(query,  function( error, result, meta ){
+                if(error){
+                    console.log(error);
+                    res.status(404).send('Not found');
+                }else{
+                    console.log(result);
+                    res.send(result);
+                }
+            });
+            //res.send(result);
         }
     });
 };

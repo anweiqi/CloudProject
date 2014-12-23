@@ -6,7 +6,7 @@ var app = express();
 var SDBcontroller = require('./Controllers/SDBController.js');
 //var S3controller  = require('./Controllers/S3Controller');
 
-SDBcontroller.simpleDBInit();
+//SDBcontroller.simpleDBInit();
 
 //http://localhost:2015/login?email=weiqian@gmail.com&password=weiqian
 app.get('/login', SDBcontroller.login);
