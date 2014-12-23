@@ -27,9 +27,9 @@
 - (void) layoutSubviews{
     [super layoutSubviews];
     
-    [_field setFont:[UIFont fontWithName:@"HelveticaNeue" size:20]];
+    [_field setFont:[UIFont fontWithName:@"HelveticaNeue" size:16]];
     [_field setFrame:CGRectMake(20.0, 00.0, 100, 40)];
-    [_content setFont:[UIFont fontWithName:@"HelveticaNeue" size:20]];
+    [_content setFont:[UIFont fontWithName:@"HelveticaNeue" size:16]];
     [_content setFrame:CGRectMake(120.0,00.0, 250, 40)];
     
 }

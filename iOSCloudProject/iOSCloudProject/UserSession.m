@@ -38,4 +38,12 @@
     return currentUser;
 }
 
+//+ (void) updateUserName:(NSString *)name password:{
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults setObject:currentUser[@"$ItemName"] forKey:@"email"];
+//    [defaults setObject:currentUser[@"password"] forKey:@"password"];
+//    [defaults setObject:currentUser[@"name"] forKey:@"name"];
+//    [defaults synchronize];
+//}
+
 @end

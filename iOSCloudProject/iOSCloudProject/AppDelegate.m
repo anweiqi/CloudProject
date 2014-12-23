@@ -115,6 +115,13 @@
     
 }
 
+- (void) userloggedOut{
+    LoginViewController *loginViewController = [[LoginViewController alloc] init];
+    UINavigationController *rootNavigationController = [[UINavigationController alloc] init];
+    [rootNavigationController setViewControllers:[NSArray arrayWithObjects:loginViewController, nil]];
+    self.window.rootViewController = rootNavigationController;
+}
+
 
 // This method will handle ALL the session state changes in the app
 - (void)sessionStateChanged:(FBSession *)session state:(FBSessionState) state error:(NSError *)error
