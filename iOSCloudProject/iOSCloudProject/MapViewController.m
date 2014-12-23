@@ -12,8 +12,6 @@
 
 @interface MapViewController ()
 
-
-
 @end
 
 @implementation MapViewController {

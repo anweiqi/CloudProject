@@ -17,7 +17,6 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         
-        //_signInButton = [[GPPSignInButton alloc] initWithFrame:CGRectMake(62, 500, 250, 40)];
     }
     return self;
 }
@@ -28,18 +27,16 @@
     [logo setImage:[UIImage imageNamed:@"logo.png"]];
     [self addSubview:logo];
     
-    UITextField *emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(62, 200, 250, 40)];
-    emailTextField.borderStyle = UITextBorderStyleRoundedRect;
-    emailTextField.textColor = [UIColor blackColor];
-    emailTextField.font = [UIFont systemFontOfSize:15.0];
-    emailTextField.placeholder = @"Email";
-    emailTextField.backgroundColor = [UIColor clearColor];
-    emailTextField.autocorrectionType = UITextAutocorrectionTypeYes;
-    emailTextField.keyboardType = UIKeyboardTypeDefault;
-    emailTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    emailTextField.delegate = self.delegate;
-    
-    [self addSubview:emailTextField];
+    _emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(62, 200, 250, 40)];
+    _emailTextField.borderStyle = UITextBorderStyleRoundedRect;
+    _emailTextField.textColor = [UIColor blackColor];
+    _emailTextField.font = [UIFont systemFontOfSize:15.0];
+    _emailTextField.placeholder = @"Email";
+    _emailTextField.backgroundColor = [UIColor clearColor];
+    _emailTextField.autocorrectionType = UITextAutocorrectionTypeYes;
+    _emailTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _emailTextField.delegate = self.delegate;
+    [self addSubview:_emailTextField];
     
     UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(62, 250, 250, 40)];
     passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
@@ -48,22 +45,30 @@
     passwordTextField.placeholder = @"Password";
     passwordTextField.backgroundColor = [UIColor clearColor];
     passwordTextField.autocorrectionType = UITextAutocorrectionTypeYes;
-    passwordTextField.keyboardType = UIKeyboardTypeDefault;
     passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    passwordTextField.secureTextEntry = YES;
     passwordTextField.delegate = self.delegate;
     [self addSubview:passwordTextField];
     
     UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     loginButton.frame = CGRectMake(62, 300, 250, 40);
     //[loginButton setBackgroundColor:[UIColor blueColor]];
-    [loginButton setTitle:@"Log In / Sign up" forState:UIControlStateNormal];
+    [loginButton setTitle:@"Log In" forState:UIControlStateNormal];
     //[loginButton setBackgroundImage:[UIImage imageNamed:@"login.png"] forState:UIControlStateNormal];
     loginButton.clipsToBounds = YES;
     loginButton.layer.cornerRadius = 5;
     loginButton.layer.borderColor = self.tintColor.CGColor;
     loginButton.layer.borderWidth=2.0f;
+    [loginButton addTarget:self.delegate action:@selector(myLoginTapped) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:loginButton];
-    [loginButton addTarget:self.delegate action:@selector(loginTapped)  forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *signupButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    signupButton.frame = CGRectMake(62, 350, 250, 40);
+    //[loginButton setBackgroundColor:[UIColor blueColor]];
+    [signupButton.titleLabel setFont:[UIFont boldSystemFontOfSize:13.0f]];
+    [signupButton setTitle:@"Sign Up" forState:UIControlStateNormal];
+    [signupButton addTarget:self.delegate action:@selector(mySignUpTapped) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:signupButton];
     
     /*UIButton *signupButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     signupButton.frame = CGRectMake(62, 350, 250, 40);
@@ -75,41 +80,16 @@
     UIImage *fbImage = [UIImage imageNamed:@"facebook.png"];
     CGSize btnSize = CGSizeMake(fbImage.size.width*2, fbImage.size.height*2);
     [fbLoginButton setBackgroundImage:fbImage forState:UIControlStateNormal];
-    fbLoginButton.frame = CGRectMake(62, 400, 250, 40);
+    fbLoginButton.frame = CGRectMake(62, 420, 250, 40);
     [self addSubview:fbLoginButton];
     [fbLoginButton addTarget:self.delegate action:@selector(loginTapped)  forControlEvents:UIControlEventTouchUpInside];
-    
-    UIButton *twLoginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    UIImage *twImage = [UIImage imageNamed:@"twitter.png"];
-    [twLoginButton setBackgroundImage:twImage forState:UIControlStateNormal];
-    twLoginButton.frame = CGRectMake(62, 450, 250, 40);
-    [self addSubview:twLoginButton];
-    //[twLoginButton addTarget:self.delegate action:@selector(loginTapped)  forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *gLoginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     UIImage *gImage = [UIImage imageNamed:@"google.png"];
     [gLoginButton setBackgroundImage:gImage forState:UIControlStateNormal];
-    gLoginButton.frame = CGRectMake(62, 500, 250, 40);
+    gLoginButton.frame = CGRectMake(62, 470, 250, 40);
     [gLoginButton addTarget:self.delegate action:@selector(gloginTapped)  forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:gLoginButton];
-    
-    //[twLoginButton addTarget:self.delegate action:@selector(loginTapped)  forControlEvents:UIControlEventTouchUpInside];
-    
-    /*FBLoginView *loginView = [[FBLoginView alloc] initWithReadPermissions:@[@"public_profile", @"email", @"user_friends"]];
-    loginView.frame = CGRectOffset(loginView.frame, (self.center.x - (loginView.frame.size.width / 2)), 5);
-    loginView.delegate = self;
-    [self addSubview:loginView];*/
-    
-    //_signInButton.frame = CGRectMake(62, 500, 250, 40);
-    //[self addSubview:_signInButton];
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

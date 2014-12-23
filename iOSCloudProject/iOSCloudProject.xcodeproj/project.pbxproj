@@ -23,6 +23,7 @@
 		386EEEBC1A4638F100AC98DA /* FriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEBB1A4638F100AC98DA /* FriendModel.m */; };
 		386EEEBF1A463C3C00AC98DA /* FeedListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEBE1A463C3C00AC98DA /* FeedListModel.m */; };
 		386EEEC21A46624200AC98DA /* Models.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEC11A46624200AC98DA /* Models.m */; };
+		3E337CE21A48C92200EC77B8 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E337CE11A48C92200EC77B8 /* SignUpViewController.m */; };
 		3E3AB8871A1835F000CE0253 /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB8861A1835F000CE0253 /* facebook_icon.png */; };
 		3E3AB8891A1835FD00CE0253 /* twitter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB8881A1835FD00CE0253 /* twitter_icon.png */; };
 		3E3AB88C1A1839F100CE0253 /* FavoriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E3AB88B1A1839F100CE0253 /* FavoriteTableViewCell.m */; };
@@ -48,17 +49,19 @@
 		3E3AB9A51A21846E00CE0253 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3AB9A41A21846E00CE0253 /* UIKit.framework */; };
 		3E435A3D1A1723C8009B77BC /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E435A3C1A1723C8009B77BC /* FeedTableViewCell.m */; };
 		3E435A461A182CC7009B77BC /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E435A451A182CC7009B77BC /* FavoriteViewController.m */; };
+		3E4FFA0C1A487C9400020702 /* ComposerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4FFA091A487C9400020702 /* ComposerView.m */; };
+		3E4FFA0D1A487C9400020702 /* ComposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4FFA0B1A487C9400020702 /* ComposerViewController.m */; };
 		3E8451311A101B5200D7659A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8451301A101B5200D7659A /* main.m */; };
 		3E8451341A101B5200D7659A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8451331A101B5200D7659A /* AppDelegate.m */; };
 		3E84514B1A101B5200D7659A /* iOSCloudProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E84514A1A101B5200D7659A /* iOSCloudProjectTests.m */; };
 		3E8451581A104D4C00D7659A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8451571A104D4C00D7659A /* LoginViewController.m */; };
 		3E84515B1A1059DE00D7659A /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E84515A1A1059DE00D7659A /* LoginView.m */; };
-		3EC6DC0B1A4653B800FF42A9 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC6DC0A1A4653B700FF42A9 /* FacebookSDK.framework */; };
-		3EC6DC0F1A4653D600FF42A9 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC6DC0C1A4653D600FF42A9 /* GoogleOpenSource.framework */; };
-		3EC6DC101A4653D600FF42A9 /* GooglePlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC6DC0D1A4653D600FF42A9 /* GooglePlus.bundle */; };
-		3EC6DC111A4653D600FF42A9 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC6DC0E1A4653D600FF42A9 /* GooglePlus.framework */; };
-		3EC6DCD31A46548700FF42A9 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC6DCD21A46548700FF42A9 /* GoogleMaps.framework */; };
-		3EC6DCD51A46552300FF42A9 /* GoogleMaps.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC6DCD41A46552300FF42A9 /* GoogleMaps.bundle */; };
+		3EC042811A47D6D800413667 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC042801A47D6D800413667 /* GoogleMaps.framework */; };
+		3EC042831A47D6E900413667 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3EC042821A47D6E900413667 /* GoogleMaps.bundle */; };
+		3EC042851A47D70E00413667 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC042841A47D70E00413667 /* FacebookSDK.framework */; };
+		3EC042891A47D72E00413667 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC042861A47D72E00413667 /* GoogleOpenSource.framework */; };
+		3EC0428A1A47D72E00413667 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3EC042871A47D72E00413667 /* GooglePlus.bundle */; };
+		3EC0428B1A47D72E00413667 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC042881A47D72E00413667 /* GooglePlus.framework */; };
 		3EE8BD7B1A1551570056E6BE /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8BD7A1A1551570056E6BE /* facebook.png */; };
 		3EE8BD7D1A155B730056E6BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8BD7C1A155B730056E6BE /* Images.xcassets */; };
 		3EE8BD7F1A155B900056E6BE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EE8BD7E1A155B900056E6BE /* Icon.png */; };
@@ -106,6 +109,8 @@
 		386EEEBE1A463C3C00AC98DA /* FeedListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListModel.m; sourceTree = "<group>"; };
 		386EEEC01A46624200AC98DA /* Models.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Models.h; sourceTree = "<group>"; };
 		386EEEC11A46624200AC98DA /* Models.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Models.m; sourceTree = "<group>"; };
+		3E337CE01A48C92200EC77B8 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		3E337CE11A48C92200EC77B8 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		3E3AB8861A1835F000CE0253 /* facebook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook_icon.png; path = Images.xcassets/facebook_icon.png; sourceTree = "<group>"; };
 		3E3AB8881A1835FD00CE0253 /* twitter_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter_icon.png; path = Images.xcassets/twitter_icon.png; sourceTree = "<group>"; };
 		3E3AB88A1A1839F100CE0253 /* FavoriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTableViewCell.h; sourceTree = "<group>"; };
@@ -135,6 +140,10 @@
 		3E435A3C1A1723C8009B77BC /* FeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewCell.m; sourceTree = "<group>"; };
 		3E435A441A182CC7009B77BC /* FavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteViewController.h; sourceTree = "<group>"; };
 		3E435A451A182CC7009B77BC /* FavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteViewController.m; sourceTree = "<group>"; };
+		3E4FFA081A487C9400020702 /* ComposerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposerView.h; sourceTree = "<group>"; };
+		3E4FFA091A487C9400020702 /* ComposerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposerView.m; sourceTree = "<group>"; };
+		3E4FFA0A1A487C9400020702 /* ComposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposerViewController.h; sourceTree = "<group>"; };
+		3E4FFA0B1A487C9400020702 /* ComposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposerViewController.m; sourceTree = "<group>"; };
 		3E84512B1A101B5200D7659A /* iOSCloudProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSCloudProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E84512F1A101B5200D7659A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E8451301A101B5200D7659A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -147,12 +156,12 @@
 		3E8451571A104D4C00D7659A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		3E8451591A1059DE00D7659A /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		3E84515A1A1059DE00D7659A /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
-		3EC6DC0A1A4653B700FF42A9 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
-		3EC6DC0C1A4653D600FF42A9 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = "../../../Documents/google-plus-ios-sdk-1.7.1/GoogleOpenSource.framework"; sourceTree = "<group>"; };
-		3EC6DC0D1A4653D600FF42A9 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = "../../../Documents/google-plus-ios-sdk-1.7.1/GooglePlus.bundle"; sourceTree = "<group>"; };
-		3EC6DC0E1A4653D600FF42A9 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = "../../../Documents/google-plus-ios-sdk-1.7.1/GooglePlus.framework"; sourceTree = "<group>"; };
-		3EC6DCD21A46548700FF42A9 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = "../../../Downloads/GoogleMaps-iOS-1.9.1/GoogleMaps.framework"; sourceTree = "<group>"; };
-		3EC6DCD41A46552300FF42A9 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "../../../Downloads/GoogleMaps-iOS-1.9.1/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
+		3EC042801A47D6D800413667 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		3EC042821A47D6E900413667 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "../../../../Downloads/GoogleMaps-iOS-1.9.1/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
+		3EC042841A47D70E00413667 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		3EC042861A47D72E00413667 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleOpenSource.framework; sourceTree = "<group>"; };
+		3EC042871A47D72E00413667 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GooglePlus.bundle; sourceTree = "<group>"; };
+		3EC042881A47D72E00413667 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GooglePlus.framework; sourceTree = "<group>"; };
 		3EE8BD7A1A1551570056E6BE /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook.png; path = Images.xcassets/facebook.png; sourceTree = "<group>"; };
 		3EE8BD7C1A155B730056E6BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3EE8BD7E1A155B900056E6BE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Images.xcassets/Icon.png; sourceTree = "<group>"; };
@@ -175,12 +184,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EC6DCD51A46552300FF42A9 /* GoogleMaps.bundle in Frameworks */,
-				3EC6DCD31A46548700FF42A9 /* GoogleMaps.framework in Frameworks */,
-				3EC6DC0F1A4653D600FF42A9 /* GoogleOpenSource.framework in Frameworks */,
-				3EC6DC101A4653D600FF42A9 /* GooglePlus.bundle in Frameworks */,
-				3EC6DC111A4653D600FF42A9 /* GooglePlus.framework in Frameworks */,
-				3EC6DC0B1A4653B800FF42A9 /* FacebookSDK.framework in Frameworks */,
+				3E3AB9991A21843B00CE0253 /* CoreLocation.framework in Frameworks */,
+				3EC042891A47D72E00413667 /* GoogleOpenSource.framework in Frameworks */,
 				3E3AB9A31A21846600CE0253 /* SystemConfiguration.framework in Frameworks */,
 				3839EF5E1A43C55700F3315C /* QuartzCore.framework in Frameworks */,
 				3839EF5C1A43C54D00F3315C /* OpenGLES.framework in Frameworks */,
@@ -190,13 +195,15 @@
 				3839EF541A43C51F00F3315C /* ImageIO.framework in Frameworks */,
 				3839EF521A43C51000F3315C /* GLKit.framework in Frameworks */,
 				3839EF501A43C4FE00F3315C /* CoreData.framework in Frameworks */,
+				3EC042811A47D6D800413667 /* GoogleMaps.framework in Frameworks */,
 				3839EF4E1A43C4EF00F3315C /* AVFoundation.framework in Frameworks */,
 				3E3AB9A51A21846E00CE0253 /* UIKit.framework in Frameworks */,
+				3EC0428B1A47D72E00413667 /* GooglePlus.framework in Frameworks */,
 				3E3AB9A11A21845D00CE0253 /* Security.framework in Frameworks */,
 				3E3AB99F1A21845500CE0253 /* MediaPlayer.framework in Frameworks */,
 				3E3AB99D1A21844E00CE0253 /* CoreText.framework in Frameworks */,
 				3E3AB99B1A21844600CE0253 /* CoreMotion.framework in Frameworks */,
-				3E3AB9991A21843B00CE0253 /* CoreLocation.framework in Frameworks */,
+				3EC042851A47D70E00413667 /* FacebookSDK.framework in Frameworks */,
 				3E3AB9971A21843200CE0253 /* Foundation.framework in Frameworks */,
 				3E3AB9951A21842900CE0253 /* AssetsLibrary.framework in Frameworks */,
 				3E3AB9931A21842000CE0253 /* AddressBook.framework in Frameworks */,
@@ -217,12 +224,12 @@
 		3E8451221A101B5200D7659A = {
 			isa = PBXGroup;
 			children = (
-				3EC6DCD41A46552300FF42A9 /* GoogleMaps.bundle */,
-				3EC6DCD21A46548700FF42A9 /* GoogleMaps.framework */,
-				3EC6DC0C1A4653D600FF42A9 /* GoogleOpenSource.framework */,
-				3EC6DC0D1A4653D600FF42A9 /* GooglePlus.bundle */,
-				3EC6DC0E1A4653D600FF42A9 /* GooglePlus.framework */,
-				3EC6DC0A1A4653B700FF42A9 /* FacebookSDK.framework */,
+				3EC042861A47D72E00413667 /* GoogleOpenSource.framework */,
+				3EC042871A47D72E00413667 /* GooglePlus.bundle */,
+				3EC042881A47D72E00413667 /* GooglePlus.framework */,
+				3EC042821A47D6E900413667 /* GoogleMaps.bundle */,
+				3EC042801A47D6D800413667 /* GoogleMaps.framework */,
+				3EC042841A47D70E00413667 /* FacebookSDK.framework */,
 				3839EF5D1A43C55700F3315C /* QuartzCore.framework */,
 				3839EF5B1A43C54D00F3315C /* OpenGLES.framework */,
 				3839EF591A43C54000F3315C /* libz.dylib */,
@@ -286,9 +293,15 @@
 				3E435A3B1A1723C8009B77BC /* FeedTableViewCell.h */,
 				3E435A3C1A1723C8009B77BC /* FeedTableViewCell.m */,
 				3E3AB88A1A1839F100CE0253 /* FavoriteTableViewCell.h */,
+				3E4FFA081A487C9400020702 /* ComposerView.h */,
+				3E4FFA091A487C9400020702 /* ComposerView.m */,
+				3E4FFA0A1A487C9400020702 /* ComposerViewController.h */,
+				3E4FFA0B1A487C9400020702 /* ComposerViewController.m */,
 				3E3AB88B1A1839F100CE0253 /* FavoriteTableViewCell.m */,
 				383328731A48CDBB00CE0036 /* SettingTableViewCell.h */,
 				383328741A48CDBB00CE0036 /* SettingTableViewCell.m */,
+				3E337CE01A48C92200EC77B8 /* SignUpViewController.h */,
+				3E337CE11A48C92200EC77B8 /* SignUpViewController.m */,
 				3E8451571A104D4C00D7659A /* LoginViewController.m */,
 				3E8451561A104D4C00D7659A /* LoginViewController.h */,
 				3EE8BD851A159C4C0056E6BE /* FeedViewController.h */,
@@ -465,8 +478,10 @@
 				3EE8BD7F1A155B900056E6BE /* Icon.png in Resources */,
 				3E3AB8A01A18BFCD00CE0253 /* logo.png in Resources */,
 				3EE8BD931A15B4E00056E6BE /* settings.png in Resources */,
+				3EC042831A47D6E900413667 /* GoogleMaps.bundle in Resources */,
 				3E3AB88E1A183B9F00CE0253 /* weiqi.jpg in Resources */,
 				3E3AB8871A1835F000CE0253 /* facebook_icon.png in Resources */,
+				3EC0428A1A47D72E00413667 /* GooglePlus.bundle in Resources */,
 				3EE8BD811A155E580056E6BE /* twitter.png in Resources */,
 				3EE8BD921A15B4E00056E6BE /* news.png in Resources */,
 				3EE8BD7D1A155B730056E6BE /* Images.xcassets in Resources */,
@@ -504,8 +519,11 @@
 				3E435A3D1A1723C8009B77BC /* FeedTableViewCell.m in Sources */,
 				385997041A488D6B00C2AB3B /* UserModel.m in Sources */,
 				3E3AB88C1A1839F100CE0253 /* FavoriteTableViewCell.m in Sources */,
+				3E337CE21A48C92200EC77B8 /* SignUpViewController.m in Sources */,
 				386EEEB91A4635AC00AC98DA /* FriendListModel.m in Sources */,
 				383328751A48CDBB00CE0036 /* SettingTableViewCell.m in Sources */,
+				3E4FFA0C1A487C9400020702 /* ComposerView.m in Sources */,
+				3E4FFA0D1A487C9400020702 /* ComposerViewController.m in Sources */,
 				386EEEC21A46624200AC98DA /* Models.m in Sources */,
 				3E8451311A101B5200D7659A /* main.m in Sources */,
 				3E84515B1A1059DE00D7659A /* LoginView.m in Sources */,
@@ -625,6 +643,7 @@
 					"/Users/jiuyangzhao/Documents/google-plus-ios-sdk-1.7.1",
 					"/Users/jiuyangzhao/Documents/GoogleMapSDK/GoogleMaps-iOS-1.9.0",
 					"/Users/weiqi/Downloads/GoogleMaps-iOS-1.9.1",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iOSCloudProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -645,6 +664,7 @@
 					"/Users/jiuyangzhao/Documents/google-plus-ios-sdk-1.7.1",
 					"/Users/jiuyangzhao/Documents/GoogleMapSDK/GoogleMaps-iOS-1.9.0",
 					"/Users/weiqi/Downloads/GoogleMaps-iOS-1.9.1",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iOSCloudProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

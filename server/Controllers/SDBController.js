@@ -27,7 +27,10 @@ exports.add_user= function(req, res) {
     var params = url.parse(req.url, true).query;
     sdb.putItem('userinfo', params.email, {password:params.password, name:params.name}, function( error ) {
         if(error){
+            res.status(404).end();
             console.log(error);
+        }else{
+            res.send({error:0});
         }
     });
 };
@@ -70,7 +73,7 @@ exports.get_user= function(req, res) {
 exports.post_checkin = function(req,res) {
     var params = url.parse(req.url, true).query;
     console.log(params);
-    sdb.putItem('checkin', (new Date()).getTime(), {latitude:params.latitude, longitude:params.longtitude, email:params.email, time:(new Date()).getTime(), text: params.text}, function( error ) {
+    sdb.putItem('checkin', (new Date()).toString(), {latitude:params.latitude, longitude:params.longitude, email:params.email, time:(new Date()).getTime(), text: params.text}, function( error ) {
         if(error){
             console.log(error);
         }else{
@@ -128,7 +131,7 @@ exports.post_follow = function(req,res) {
         }else{
             var newResult;
             if(result.length){
-                newResult = result[0].followList;
+                newResult = result[0].followList.split(",");
             }else{
                 newResult = [];
             }
@@ -149,16 +152,16 @@ exports.delete_follow = function(req,res) {
     var params = url.parse(req.url, true).query;
     console.log(params);
 
-    sdb.select("select * from follow where itemName() = '" + params.email + "'", function( error, result, meta ){
+   sdb.select("select * from follow where itemName() = '" + params.email + "'", function( error, result, meta ){
        if(error){
             console.log(error);
             res.status(404).send('Not found');
         }else{
             var newResult;
             if(result.length){
-                newResult = result[0].followList;
-                if(newResult.indexOf(params.email) > -1){
-                    var index = newResult.indexOf(params.email);
+                newResult = result[0].followList.split(",");
+                if(newResult.indexOf(params.follower) > -1){
+                    var index = newResult.indexOf(params.follower);
                     if (index > -1) {
                         newResult.splice(index, 1);
                     }
@@ -179,33 +182,72 @@ exports.delete_follow = function(req,res) {
 };
 
 
-get_first = function(res, limit){
-    sdb_query("select * from catalog limit "+limit, res);
-}
+// get_first = function(res, limit){
+//     sdb_query("select * from catalog limit "+limit, res);
+// }
 
-/*sdb.deleteDomain('checkin',function(err,res,meta) {
-    if (!err) {
-        console.log('Domain checkin is deleted');
-    }
-});*/
+// sdb.deleteDomain('checkin',function(err,res,meta) {
+//     if (!err) {
+//         console.log('Domain checkin is deleted');
+//     }
+// });
+
+// sdb.createDomain('checkin', function( error ) {
+//     if(error){
+//         console.log("Error in creating domain");
+//     }
+// });
+
 
 exports.simpleDBInit= function() {
+    sdb.createDomain('userinfo', function( error ) {
+        if(error){
+            console.log("Error in creating domain");
+        }
+    });
 
-sdb.createDomain('userinfo', function( error ) {
-    if(error){
-        console.log("Error in creating domain");
-    }
-});
+    sdb.createDomain('checkin', function( error ) {
+        if(error){
+            console.log("Error in creating domain");
+        }
+    });
 
-sdb.createDomain('checkin', function( error ) {
-    if(error){
-        console.log("Error in creating domain");
-    }
-});
+    sdb.createDomain('follow', function( error ) {
+        if(error){
+            console.log("Error in creating domain");
+        }
+    });
+};
 
-sdb.createDomain('follow', function( error ) {
-    if(error){
-        console.log("Error in creating domain");
-    }
-});
-}
+// sdb.createDomain('follow', function( error ) {
+//     if(error){
+//         console.log("Error in creating domain");
+//     }
+// });
+
+// params = {email: "weiqian.pku@gmail.com", follower: "xiao@gmail.com"};
+
+// sdb.select("select * from follow where itemName() = '" + params.email + "'", function( error, result, meta ){
+//        if(error){
+//             console.log(error);
+//             res.status(404).send('Not found');
+//         }else{
+//             var follow_list = result[0].followList.split(",");
+//             var query ="select * from userinfo where itemName() = '" ;
+
+//             result.forEach(function(item){
+//                 query = query + item +
+//                 sdb.select("select * from userinfo where itemName() = '" + item + "'", function( error, user, meta ){
+//                     if(error){
+//                         console.log(error);
+//                         res.status(404).send('Not found');
+//                     }else{
+//                         console.log(user);
+//                         res.send(result);
+//                     }
+//                 });
+//             });
+//             console.log(result);
+//             res.send(result);
+//         }
+//     });

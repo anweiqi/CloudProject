@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FeedListModel.h"
 
-@interface FeedViewController : UITableViewController <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface FeedViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UISearchDisplayController *searchController;
 @property (strong, nonatomic) UISearchBar *searchBar;

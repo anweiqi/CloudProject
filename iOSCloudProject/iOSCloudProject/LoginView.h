@@ -20,4 +20,6 @@
 
 @property (retain, nonatomic) GPPSignInButton *signInButton;
 
+@property UITextField *emailTextField;
+
 @end

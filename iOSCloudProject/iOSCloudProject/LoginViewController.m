@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "LoginView.h"
+#import "SignUpViewController.h"
 
 @interface LoginViewController ()
 
@@ -23,11 +24,16 @@ static NSString * const kClientId = @"814816072679-6hfkd2q1n8b8slh21e0uie5ctgt0g
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    LoginView *loginView = [[LoginView alloc] init];
-    loginView.delegate = self;
-    self.view = loginView;
+    _loginView = [[LoginView alloc] init];
+    _loginView.delegate = self;
+    self.view = _loginView;
+    [self.navigationController setNavigationBarHidden:YES];
     
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)finishedWithAuth: (GTMOAuth2Authentication *)auth
@@ -37,9 +43,17 @@ static NSString * const kClientId = @"814816072679-6hfkd2q1n8b8slh21e0uie5ctgt0g
         NSLog(@"%@",error);
     } else {
         AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+        //[self storeUser];
         // Call the app delegate's sessionStateChanged:state:error method to handle session state changes
         [appDelegate userloggedIn];
     }
+}
+
+- (void) storeUser{
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    [defaults setObject:userNameText forKey:@"username"];
+//    [defaults setObject:passWordText forKey:@"password"];
+//    [defaults synchronize];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,15 +61,18 @@ static NSString * const kClientId = @"814816072679-6hfkd2q1n8b8slh21e0uie5ctgt0g
     // Dispose of any resources that can be recreated.
 }
 
-- (void) loginTapped: (NSString*) email password: (NSString*) password{
-    
-    NSLog(@"email!!!!!!!%@", self.emailTextField.text);
-    // If the session state is any of the two "open" states when the button is clicked
+- (void) myLoginTapped{
+    NSLog(@"%@",_loginView.emailTextField.text);
+}
+
+- (void) mySignUpTapped{
+    SignUpViewController *signUpViewController = [[SignUpViewController alloc] init];
+    //[self presentViewController:signUpViewController animated:YES completion:nil];
+    [self.navigationController pushViewController:signUpViewController animated:YES];
 }
 
 - (void) loginTapped{
     
-    NSLog(@"email!!!!!!!%@", self.emailTextField.text);
     // If the session state is any of the two "open" states when the button is clicked
     if (FBSession.activeSession.state == FBSessionStateOpen
         || FBSession.activeSession.state == FBSessionStateOpenTokenExtended) {

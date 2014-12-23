@@ -9,21 +9,20 @@
 #import "FeedViewController.h"
 #import "FeedView.h"
 #import "FeedTableViewCell.h"
+#import "ComposerViewController.h"
+#import "ComposerView.h"
+
 #import "FeedListModel.h"
 #import "FeedModel.h"
 #import "FriendListModel.h"
 
 @interface FeedViewController ()
 
-@property (strong, nonatomic) UITableView *newsTableView;
 @property (strong, nonatomic) NSMutableArray *filteredData;
-@property (nonatomic) BOOL isSearching;
 
 @end
 
 @implementation FeedViewController
-@synthesize searchBar;
-@synthesize searchController;
 
 - (id)init {
     self = [super init];
@@ -31,23 +30,29 @@
         self.title = NSLocalizedString(@"News Feed", @"News Feed");
         self.tabBarItem.image = [UIImage imageNamed:@"news.png"];
         UIBarButtonItem *addButton = [[UIBarButtonItem alloc]
-                                      initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                      target:self action:@selector(addButtonPressed:)];
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+                                      target:self action:@selector(addButtonPressed)];
         self.navigationItem.rightBarButtonItem = addButton;
         
-        FriendListModel *friendList = [[FriendListModel alloc] init];
-        friendList.me = @"weiqian.pku@gmail.com";
+//        FriendListModel *friendList = [[FriendListModel alloc] init];
+//        friendList.me = @"weiqian.pku@gmail.com";
+//        
+//        //[friendList addFriends:@"jiuyangzhaoaaaaa.sjtu@gmail.com"];
+//        
+//        FeedListModel *feedList = [[FeedListModel alloc] init];
+//        [feedList getFeed:@"weiqian.pku@gmail.com"];
         
-        //[friendList addFriends:@"jiuyangzhaoaaaaa.sjtu@gmail.com"];
-        
-        FeedListModel *feedList = [[FeedListModel alloc] init];
-        [feedList getFeed:@"weiqian.pku@gmail.com"];
-        
-        self.data = feedList.feedList;
+        //self.data = feedList.feedList;
         NSLog(@"This is time!!!:%i", (int)CFAbsoluteTimeGetCurrent());
-        self.filteredData = [[NSMutableArray alloc] init];
+        _filteredData = [[NSMutableArray alloc] init];
     }
     return self;
+}
+
+- (void)addButtonPressed{
+    ComposerViewController *composerViewController = [[ComposerViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:composerViewController];
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)viewDidLoad {
@@ -60,6 +65,7 @@
     self.searchController = [[UISearchDisplayController alloc]initWithSearchBar:self.searchBar contentsController:self];
     self.searchController.searchResultsDataSource = self;
     self.searchController.searchResultsDelegate = self;
+    self.searchController.delegate = self;
     //[self.tableView setContentOffset:CGPointMake(0,44) animated:YES];
     self.tableView.tableHeaderView = self.searchBar;
     
@@ -143,6 +149,7 @@
         //cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSData *imageData = [NSData dataWithContentsOfURL:item.imageUrl];
         
@@ -179,21 +186,21 @@
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    self.isSearching = YES;
+    //self.isSearching = YES;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSLog(@"Text change - %d",self.isSearching);
+    //NSLog(@"Text change - %d",self.isSearching);
     
     //Remove all objects first.
     [self.filteredData removeAllObjects];
     
     if([searchText length] != 0) {
-        self.isSearching = YES;
+        //self.isSearching = YES;
         [self searchTableList];
     }
     else {
-        self.isSearching = NO;
+        //self.isSearching = NO;
     }
     [self.tableView reloadData];
 }
