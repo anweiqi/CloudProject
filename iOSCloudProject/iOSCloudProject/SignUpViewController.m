@@ -9,6 +9,7 @@
 
 #import "AppDelegate.h"
 #import "SignUpViewController.h"
+#import "UserSession.h"
 
 @interface SignUpViewController ()
 
@@ -49,8 +50,6 @@ UITextField* passwordField;
     components.queryItems = queryItems;
     NSURL *url = components.URL;
     
-    NSLog(@"%@",url);
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"POST"];
     [request setURL:url];
@@ -61,26 +60,24 @@ UITextField* passwordField;
     
     NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
     
-        NSString *result = [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
-        NSDictionary* jsonObject = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:NULL];
-    
-        if(jsonObject[@"error"] == 0){
-            NSLog(@"%@", @"yesssss");
-        }else{
-        }
-    
-        NSLog(@"%@", jsonObject);
-    
-    if([responseCode statusCode] != 200){
+    if([responseCode statusCode] == 403){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"User exists. Please log in"
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }else if([responseCode statusCode] != 200){
         NSLog(@"Error getting %@, HTTP status code %i", url, (int)[responseCode statusCode]);
         NSLog(@"%@", oResponseData);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"Error checkin"
+                                                        message:@"Error Sign Up"
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
     }else{
+        [UserSession storeLoggedinUser:queryDictionary];
         AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
         [appDelegate userloggedIn];
     }
@@ -153,5 +150,12 @@ UITextField* passwordField;
     
     return cell;
 }
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if ([alertView.message isEqualToString:@"User exists. Please log in"]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 
 @end

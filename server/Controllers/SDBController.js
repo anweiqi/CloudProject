@@ -15,7 +15,7 @@ exports.login= function(req, res) {
             res.status(403).send('Incorrect email/password');
         }else{
             if(result[0].password == params.password){
-                res.send({error:0});
+                res.send(result[0]);
             }else{
                 res.status(403).send('Incorrect email/password');
             }
@@ -25,9 +25,30 @@ exports.login= function(req, res) {
 
 exports.add_user= function(req, res) {
     var params = url.parse(req.url, true).query;
+    sdb.select("select * from userinfo where itemName() = '" + params.email + "'", function( error, result, meta ){
+        if(error){
+            res.status(404).send('Unknown Error');
+            console.log(error);
+        }else if(result.length){
+            res.status(403).send('User exists');
+        }else{
+            sdb.putItem('userinfo', params.email, {password:params.password, name:params.name}, function( error ) {
+                if(error){
+                    res.status(404).send('Unknown Error');
+                    console.log(error);
+                }else{
+                    res.send({error:0});
+                }
+            });
+        }
+    });
+};
+
+exports.update_user= function(req, res) {
+    var params = url.parse(req.url, true).query;
     sdb.putItem('userinfo', params.email, {password:params.password, name:params.name}, function( error ) {
         if(error){
-            res.status(404).end();
+            res.status(404).send('Unknown Error');
             console.log(error);
         }else{
             res.send({error:0});
@@ -114,8 +135,26 @@ exports.get_follow = function(req,res) {
             console.log(error);
             res.status(404).send('Not found');
         }else{
+            if (result.length == 0) res.send([]);
+            else{
             console.log(result);
-            res.send(result);
+            var arrayResult = result[0].followList.split(",");
+            var query = "select email, name from userinfo where itemName() = ";
+            for(i=0; i<arrayResult.length-1;i++){
+                query = query + "'" + arrayResult[i] + "' or itemName() =" ;
+            }
+            query = query +  "'" + arrayResult[i] + "'";
+            sdb.select(query,  function( error, result, meta ){
+                if(error){
+                    console.log(error);
+                    res.status(404).send('Not found');
+                }else{
+                    console.log(result);
+                    res.send(result);
+                }
+            });
+            //res.send(result);
+            }
         }
     });
 };
@@ -150,33 +189,14 @@ exports.post_follow = function(req,res) {
 
 exports.delete_follow = function(req,res) {
     var params = url.parse(req.url, true).query;
-    console.log(params);
 
-   sdb.select("select * from follow where itemName() = '" + params.email + "'", function( error, result, meta ){
-       if(error){
+    sdb.deleteItem('follow',params.email,{ followList: params.follower}, function( error, result, meta ){
+        if(error){
             console.log(error);
             res.status(404).send('Not found');
         }else{
-            var newResult;
-            if(result.length){
-                newResult = result[0].followList.split(",");
-                if(newResult.indexOf(params.follower) > -1){
-                    var index = newResult.indexOf(params.follower);
-                    if (index > -1) {
-                        newResult.splice(index, 1);
-                    }
-                }
-            }else{
-                newResult = [];
-            }
-            sdb.putItem('follow', params.email, {followList:newResult}, function( error ) {
-                if(error){
-                    console.log(error);
-                    res.status(404).send('Not found');
-                }else{
-                    res.send({error:0});
-                }
-            });
+            console.log(result);
+            res.send(result);
         }
     });
 };

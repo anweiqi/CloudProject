@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "LoginView.h"
 #import "SignUpViewController.h"
+#import "UserSession.h"
 
 @interface LoginViewController ()
 
@@ -49,13 +50,6 @@ static NSString * const kClientId = @"814816072679-6hfkd2q1n8b8slh21e0uie5ctgt0g
     }
 }
 
-- (void) storeUser{
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [defaults setObject:userNameText forKey:@"username"];
-//    [defaults setObject:passWordText forKey:@"password"];
-//    [defaults synchronize];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -63,6 +57,43 @@ static NSString * const kClientId = @"814816072679-6hfkd2q1n8b8slh21e0uie5ctgt0g
 
 - (void) myLoginTapped{
     NSLog(@"%@",_loginView.emailTextField.text);
+    
+    NSURLComponents *components = [NSURLComponents componentsWithString:@"http://localhost:2015/login"];
+    NSDictionary *queryDictionary = @{ @"email": _loginView.emailTextField.text, @"password": _loginView.passwordTextField.text};
+    NSMutableArray *queryItems = [NSMutableArray array];
+    for (NSString *key in queryDictionary) {
+        [queryItems addObject:[NSURLQueryItem queryItemWithName:key value:queryDictionary[key]]];
+    }
+    components.queryItems = queryItems;
+    NSURL *url = components.URL;
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setHTTPMethod:@"GET"];
+    [request setURL:url];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
+    NSError *error = [[NSError alloc] init];
+    NSHTTPURLResponse *responseCode = nil;
+    
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+    NSString *result = [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
+    NSDictionary* jsonObject = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:NULL];
+    
+    if([responseCode statusCode] != 200){
+        NSLog(@"Error getting %@, HTTP status code %i", url, (int)[responseCode statusCode]);
+        NSLog(@"%@", oResponseData);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Incorrect Email/Password. Please Try Again."
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }else{
+        [UserSession storeLoggedinUser:jsonObject];
+        AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+        [appDelegate userloggedIn];
+    }
+
 }
 
 - (void) mySignUpTapped{

@@ -6,7 +6,7 @@ var app = express();
 var SDBcontroller = require('./Controllers/SDBController.js');
 //var S3controller  = require('./Controllers/S3Controller');
 
-SDBcontroller.simpleDBInit();
+//SDBcontroller.simpleDBInit();
 
 //http://localhost:2015/login?email=weiqian@gmail.com&password=weiqian
 app.get('/login', SDBcontroller.login);
@@ -15,7 +15,7 @@ app.get('/login', SDBcontroller.login);
 app.get('/user', SDBcontroller.get_user);
 //http://localhost:2015/user?email=weiqian@gmail.com&password=weiqian&name=WeiqiAn
 app.post('/user', SDBcontroller.add_user);
-//app.put('/user',  SDBcontroller.add_user);
+app.put('/user',  SDBcontroller.update_user);
 
 //http://localhost:2015/checkin
 //http://localhost:2015/checkin?email=weiqian@gmail.com
