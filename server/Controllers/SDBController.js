@@ -131,10 +131,11 @@ exports.get_follow = function(req,res) {
     console.log(params);
 
     sdb.select("select * from follow where itemName() = '" + params.email + "'", function( error, result, meta ){
-       if(error || result.length == 0){
+       if(error){
             console.log(error);
             res.status(404).send('Not found');
         }else{
+            if (result.length == 0) res.send([]);
             console.log(result);
             var arrayResult = result[0].followList.split(",");
             var query = "select email, name from userinfo where itemName() = ";
