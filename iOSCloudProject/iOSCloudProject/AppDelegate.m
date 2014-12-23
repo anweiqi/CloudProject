@@ -19,6 +19,7 @@
 #import "FriendListModel.h"
 #import "FeedListModel.h"
 #import "UserModel.h"
+#import "UserSession.h"
 
 @interface AppDelegate ()
 
@@ -93,7 +94,8 @@
     self.window.rootViewController = self.tabBarController;
     
     FriendListModel *friendlist = [[FriendListModel alloc] init];
-    friendlist.me = @"jiuyang@gmail.com";
+    NSDictionary *currentUser = [UserSession getLoggedinUser];
+    friendlist.me = currentUser[@"email"];
     [friendlist getFriends:friendlist.me];
     
     UserModel *user = [[UserModel alloc] init];
