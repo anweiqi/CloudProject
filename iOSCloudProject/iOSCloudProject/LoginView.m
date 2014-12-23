@@ -38,17 +38,17 @@
     _emailTextField.delegate = self.delegate;
     [self addSubview:_emailTextField];
     
-    UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(62, 250, 250, 40)];
-    passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
-    passwordTextField.textColor = [UIColor blackColor];
-    passwordTextField.font = [UIFont systemFontOfSize:15.0];
-    passwordTextField.placeholder = @"Password";
-    passwordTextField.backgroundColor = [UIColor clearColor];
-    passwordTextField.autocorrectionType = UITextAutocorrectionTypeYes;
-    passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    passwordTextField.secureTextEntry = YES;
-    passwordTextField.delegate = self.delegate;
-    [self addSubview:passwordTextField];
+    _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(62, 250, 250, 40)];
+    _passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
+    _passwordTextField.textColor = [UIColor blackColor];
+    _passwordTextField.font = [UIFont systemFontOfSize:15.0];
+    _passwordTextField.placeholder = @"Password";
+    _passwordTextField.backgroundColor = [UIColor clearColor];
+    _passwordTextField.autocorrectionType = UITextAutocorrectionTypeYes;
+    _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    _passwordTextField.secureTextEntry = YES;
+    _passwordTextField.delegate = self.delegate;
+    [self addSubview:_passwordTextField];
     
     UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     loginButton.frame = CGRectMake(62, 300, 250, 40);

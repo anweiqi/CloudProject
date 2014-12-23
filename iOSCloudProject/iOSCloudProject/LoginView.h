@@ -22,4 +22,6 @@
 
 @property UITextField *emailTextField;
 
+@property UITextField *passwordTextField;
+
 @end
