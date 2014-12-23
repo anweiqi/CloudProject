@@ -9,6 +9,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import "ComposerViewController.h"
+#import "UserSession.h"
 
 @interface ComposerViewController ()
 
@@ -19,12 +20,14 @@
 CLLocationManager *locationManager;
 NSString *longitude;
 NSString *latitude;
+NSDictionary* currentUser;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     _composerView = [[ComposerView alloc] init];
     _composerView.delegate = self;
     self.view = _composerView;
+    self.navigationController.title = @"Check In";
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
                                    initWithTitle:@"Cancel"
                                    style:UIBarButtonSystemItemCancel
@@ -37,6 +40,7 @@ NSString *latitude;
                                      target:self
                                      action:@selector(post)];
     self.navigationItem.rightBarButtonItem = postButton;
+    currentUser = [UserSession getLoggedinUser];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -55,8 +59,7 @@ NSString *latitude;
     if (currentLocation != nil) {
         longitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
         latitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
-        NSLog(@"%@", longitude);
-        NSLog(@"%@", latitude);
+        [_composerView.locationLabel setText:[NSString stringWithFormat:@"%@, %@", latitude, longitude]];
         [locationManager stopUpdatingLocation];
     }
 }
@@ -74,10 +77,21 @@ NSString *latitude;
 }
 
 - (void) post{
-    NSString * url = @"http://160.39.221.6:2015/checkin?email=jiuyang@gmail.com&latitude=40&longitude=85&text=notimeleft";
+    //http://localhost:2015/checkin?email=weiqian@gmail.com&latitude=30&longitude=80&text=helloworld
+
+    NSURLComponents *components = [NSURLComponents componentsWithString:@"http://160.39.221.6:2015/user"];
+    NSDictionary *queryDictionary = @{ @"email": currentUser[@"email"], @"latitude": latitude, @"longitude":longitude, @"text": _composerView.checkinText.text};
+    NSMutableArray *queryItems = [NSMutableArray array];
+    for (NSString *key in queryDictionary) {
+        [queryItems addObject:[NSURLQueryItem queryItemWithName:key value:queryDictionary[key]]];
+    }
+    components.queryItems = queryItems;
+    NSURL *url = components.URL;
+    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"POST"];
-    [request setURL:[NSURL URLWithString:url]];
+    [request setURL:url];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     
     NSError *error = [[NSError alloc] init];
     NSHTTPURLResponse *responseCode = nil;
@@ -86,37 +100,27 @@ NSString *latitude;
     
     if([responseCode statusCode] != 200){
         NSLog(@"Error getting %@, HTTP status code %i", url, (int)[responseCode statusCode]);
+        NSLog(@"%@", oResponseData);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"Error checkin"
+                                                        message:@"Error Connecting to the Server"
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
     }else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Succeed"
-                                                        message:@"Checked in"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Checked In"
+                                                        message:@"You have just checked in!"
                                                        delegate:self
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
     }
-    
-    
-    NSString *result = [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
-    NSDictionary* jsonObject = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:NULL];
-    
-    if(jsonObject[@"error"] == 0){
-        NSLog(@"%@", @"yesssss");
-    }else{
-    }
-    
-    NSLog(@"%@", result);
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    // the user clicked OK
-    //if (buttonIndex == 0) {}
-    [self exit];
+    if([alertView.title isEqualToString:@"Checked In"]){
+        [self exit];
+    }
 }
 
 
