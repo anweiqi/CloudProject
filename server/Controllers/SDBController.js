@@ -131,7 +131,7 @@ exports.get_follow = function(req,res) {
     console.log(params);
 
     sdb.select("select * from follow where itemName() = '" + params.email + "'", function( error, result, meta ){
-       if(error){
+       if(error || result.length == 0){
             console.log(error);
             res.status(404).send('Not found');
         }else{
