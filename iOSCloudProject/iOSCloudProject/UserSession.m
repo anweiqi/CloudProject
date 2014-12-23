@@ -12,7 +12,7 @@
 
 + (void) storeLoggedinUser:(NSDictionary *)currentUser{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:currentUser[@"email"] forKey:@"email"];
+    [defaults setObject:currentUser[@"$ItemName"] forKey:@"email"];
     [defaults setObject:currentUser[@"password"] forKey:@"password"];
     [defaults setObject:currentUser[@"name"] forKey:@"name"];
     [defaults synchronize];
@@ -28,6 +28,8 @@
 
 + (NSDictionary*) getLoggedinUser{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *email =[defaults objectForKey:@"email"];
+    NSLog(@"%@", email);
     NSDictionary * currentUser = @{
                                    @"email":[defaults objectForKey:@"email"],
                                    @"password":[defaults objectForKey:@"password"],

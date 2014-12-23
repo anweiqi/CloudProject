@@ -134,7 +134,7 @@ exports.get_follow = function(req,res) {
        if(error){
             console.log(error);
             res.status(404).send('Not found');
-        }else{
+        }else if(result.length){
             console.log(result);
             var arrayResult = result[0].followList.split(",");
             var query = "select email, name from userinfo where itemName() = ";
@@ -152,6 +152,8 @@ exports.get_follow = function(req,res) {
                 }
             });
             //res.send(result);
+        }else{
+            res.send(result);
         }
     });
 };

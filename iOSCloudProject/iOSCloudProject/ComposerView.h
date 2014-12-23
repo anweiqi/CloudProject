@@ -19,4 +19,6 @@
 
 @property UIButton *locationButton;
 
+@property UILabel *locationLabel;
+
 @end

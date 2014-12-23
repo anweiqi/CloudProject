@@ -30,7 +30,12 @@
     [_locationButton addTarget:self.delegate action:@selector(locationTapped) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_locationButton];
     
-    _checkinText = [[UITextView alloc] initWithFrame:CGRectMake(0, 44, screenWidth, screenHeight-44)];
+    _locationLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 44, screenWidth, 44)];
+    _locationLabel.textAlignment = NSTextAlignmentCenter;
+    _locationLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
+    [self addSubview:_locationLabel];
+    
+    _checkinText = [[UITextView alloc] initWithFrame:CGRectMake(10, 88, screenWidth-20, screenHeight)];
     //_checkinText.textColor = [UIColor blackColor];
     _checkinText.font = [UIFont systemFontOfSize:15.0];
     //[_checkinText setText:@"Say something..."];

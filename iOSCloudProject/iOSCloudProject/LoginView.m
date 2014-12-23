@@ -34,7 +34,6 @@
     _emailTextField.placeholder = @"Email";
     _emailTextField.backgroundColor = [UIColor clearColor];
     _emailTextField.autocorrectionType = UITextAutocorrectionTypeYes;
-    _emailTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _emailTextField.delegate = self.delegate;
     [self addSubview:_emailTextField];
     
@@ -44,8 +43,6 @@
     _passwordTextField.font = [UIFont systemFontOfSize:15.0];
     _passwordTextField.placeholder = @"Password";
     _passwordTextField.backgroundColor = [UIColor clearColor];
-    _passwordTextField.autocorrectionType = UITextAutocorrectionTypeYes;
-    _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _passwordTextField.secureTextEntry = YES;
     _passwordTextField.delegate = self.delegate;
     [self addSubview:_passwordTextField];
