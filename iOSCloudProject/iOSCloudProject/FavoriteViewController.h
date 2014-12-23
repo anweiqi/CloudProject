@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FriendListModel.h"
+#import "AddFriendViewController.h"
 
 @interface FavoriteViewController : UITableViewController
 

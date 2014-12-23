@@ -24,6 +24,11 @@
         self.title = NSLocalizedString(@"Special List", @"Favorites");
         self.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:1];
         
+        UIBarButtonItem *createButton = [[UIBarButtonItem alloc]
+                                         initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                         target:self
+                                         action:@selector(addFriend)];
+        self.navigationItem.rightBarButtonItem = createButton;
         //[UIImage imageNamed:@"settings.png"];
     }
     return self;
@@ -44,7 +49,49 @@
     self.tableView.tableHeaderView = searchBar;
     
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor whiteColor];
+    self.refreshControl.tintColor = [UIColor grayColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(getLatestFriends)
+                  forControlEvents:UIControlEventValueChanged];
 
+}
+
+- (void)getLatestFriends
+{
+    self.data = self.friendlist.friends;
+    [self performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    
+}
+
+- (void)reloadData
+{
+    // Reload table data
+    [self.tableView reloadData];
+    
+    if (self.refreshControl) {
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MMM d, h:mm a"];
+        NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
+        NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]
+                                                                    forKey:NSForegroundColorAttributeName];
+        NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+        self.refreshControl.attributedTitle = attributedTitle;
+        
+        [self.refreshControl endRefreshing];
+    }
+}
+
+- (void)addFriend {
+    AddFriendViewController *addFriendViewController = [[AddFriendViewController alloc] init];
+    addFriendViewController.FavoriteViewController = self;
+    addFriendViewController.friendlist = self.friendlist;
+    //[self presentViewController:signUpViewController animated:YES completion:nil];
+    [self.navigationController pushViewController:addFriendViewController animated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,7 +117,7 @@
     NSLog(@"cell");
 
     static NSString *CellIdentifier = @"CellIdentifier";
-    FriendModel *item = [self.data objectAtIndex:indexPath.row];
+    FriendModel *item = [self.friendlist.friends objectAtIndex:indexPath.row];
     
     // Dequeue or create a cell of the appropriate type.
     FavoriteTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

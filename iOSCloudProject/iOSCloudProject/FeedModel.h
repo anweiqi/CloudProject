@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface FeedModel : Models
+@interface FeedModel : Models <NSURLConnectionDelegate>
 
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *name;

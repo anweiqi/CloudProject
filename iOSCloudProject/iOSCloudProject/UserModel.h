@@ -10,11 +10,14 @@
 #import "FriendListModel.h"
 #import <UIKit/UIKit.h>
 
-@interface UserModel : Models
+@interface UserModel : Models <NSURLConnectionDelegate>
 
 - (void)getUser:(NSString *)email;
+- (int)setUser:(NSString *)name password:(NSString *)password;
+
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSURL *imageUrl;
 @property (nonatomic, strong) UIColor *color;
 

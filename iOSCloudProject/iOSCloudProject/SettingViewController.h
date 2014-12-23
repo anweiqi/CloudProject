@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "UserModel.h"
+#import "SettingNameViewControllerTableViewController.h"
 
 @interface SettingViewController : UITableViewController
 

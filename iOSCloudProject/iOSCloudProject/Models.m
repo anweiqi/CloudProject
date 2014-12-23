@@ -11,15 +11,16 @@
 @implementation Models
 
 - (id) init {
-    self.ipAddress = @"http://localhost:2015";
+    self.ipAddress = @"http://160.39.221.6:2015";
     return self;
 }
 
-- (NSData *) getDataFrom:(NSString *)url{
+- (NSData *) getDataFrom:(NSURL *)url{
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"GET"];
-    [request setURL:[NSURL URLWithString:url]];
+    [request setURL:url];
     
+    //[request setURL:[NSURL URLWithString:url]];
     NSError *error = [[NSError alloc] init];
     NSHTTPURLResponse *responseCode = nil;
     
@@ -33,10 +34,10 @@
     return oResponseData;
 }
 
-- (void) postDataTo:(NSString *)url data:(NSData *)postData {
+- (int) postDataTo:(NSURL *)url data:(NSData *)postData {
     
     NSString *postLength = [NSString stringWithFormat:@"%lu", [postData length]];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -51,11 +52,35 @@
     if([responseCode statusCode] != 200){
         NSLog(@"Error getting %@, HTTP status code %i", url, (int)[responseCode statusCode]);
     }
+    
+    return [responseCode statusCode];
 }
 
-- (void) deleteData:(NSString *)url {
+- (int) putDataTo:(NSURL *)url data:(NSData *)postData {
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    NSString *postLength = [NSString stringWithFormat:@"%lu", [postData length]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [request setHTTPMethod:@"PUT"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSError *error = [[NSError alloc] init];
+    NSHTTPURLResponse *responseCode = nil;
+    
+    [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+    
+    if([responseCode statusCode] != 200){
+        NSLog(@"Error getting %@, HTTP status code %i", url, (int)[responseCode statusCode]);
+    }
+    
+    return [responseCode statusCode];
+}
+
+- (int) deleteData:(NSURL *)url {
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
     [request setHTTPMethod:@"DELETE"];
     
@@ -67,6 +92,8 @@
     if([responseCode statusCode] != 200){
         NSLog(@"Error getting %@, HTTP status code %i", url, (int)[responseCode statusCode]);
     }
+    
+    return [responseCode statusCode];
 }
 
 @end

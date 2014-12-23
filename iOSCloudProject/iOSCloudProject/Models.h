@@ -12,10 +12,12 @@
 
 @property (nonatomic, strong) NSString *ipAddress;
 
-- (NSData *) getDataFrom:(NSString *)url;
+- (NSData *) getDataFrom:(NSURL *)url;
 
-- (void) postDataTo:(NSString *)url data:(NSData *)postData;
+- (int) postDataTo:(NSURL *)url data:(NSData *)postData;
 
-- (void) deleteData:(NSString *)url;
+- (int) putDataTo:(NSURL *)url data:(NSData *)putData;
+
+- (int) deleteData:(NSURL *)url;
 
 @end

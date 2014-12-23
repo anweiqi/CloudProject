@@ -12,7 +12,7 @@
 #import "UserModel.h"
 #import <Foundation/Foundation.h>
 
-@interface FeedListModel : Models
+@interface FeedListModel : Models <NSURLConnectionDelegate>
 
 @property (nonatomic, strong) NSMutableArray *feedList;
 - (void)getFeed:(NSString *)email;

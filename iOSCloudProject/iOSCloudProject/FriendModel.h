@@ -9,7 +9,7 @@
 #import "Models.h"
 #import <Foundation/Foundation.h>
 
-@interface FriendModel : Models
+@interface FriendModel : Models <NSURLConnectionDelegate>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *email;

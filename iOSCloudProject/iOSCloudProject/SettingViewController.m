@@ -20,6 +20,10 @@
     if (self) {
         self.title = NSLocalizedString(@"Settings", @"Settings");
         self.tabBarItem.image = [UIImage imageNamed:@"settings.png"];
+        UIBarButtonItem *addButton = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                      target:self action:@selector(getLatestFeeds)];
+        self.navigationItem.rightBarButtonItem = addButton;
     }
     return self;
 }
@@ -27,6 +31,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)getLatestFeeds
+{
+    
+    [self.tableView reloadData];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,6 +121,22 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        
+        
+    } else
+    {        
+        if (indexPath.row == 0) {
+            SettingNameViewControllerTableViewController *settingNameViewControllerTableViewController = [[SettingNameViewControllerTableViewController alloc] init];
+            settingNameViewControllerTableViewController.user = self.user;
+            //[self presentViewController:signUpViewController animated:YES completion:nil];
+            [self.navigationController pushViewController:settingNameViewControllerTableViewController animated:YES];
+        } else if (indexPath.row == 1) {
+            
+        }
+    }
+}
 
 /*
 #pragma mark - Navigation

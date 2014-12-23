@@ -74,7 +74,7 @@ NSString *latitude;
 }
 
 - (void) post{
-    NSString * url = @"http://localhost:2015/checkin?email=weiqian@gmail.com&latitude=40&longitude=85&text=notimeleft";
+    NSString * url = @"http://160.39.221.6:2015/checkin?email=jiuyang@gmail.com&latitude=40&longitude=85&text=notimeleft";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"POST"];
     [request setURL:[NSURL URLWithString:url]];

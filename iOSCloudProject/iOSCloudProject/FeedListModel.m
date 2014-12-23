@@ -18,7 +18,7 @@
 - (void)getFeed:(NSString *)email {
     
     NSString* textUrl = [NSString stringWithFormat:@"%@/checkin?email=%@", self.ipAddress , email];
-    NSData* textData = [self getDataFrom: textUrl];
+    NSData* textData = [self getDataFrom: [NSURL URLWithString:textUrl]];
     NSError* error;
 //error????
     NSArray* json = [NSJSONSerialization JSONObjectWithData:textData options:kNilOptions error:&error];
@@ -66,7 +66,7 @@
 - (void)getMyFeed:(NSString *)email {
     
     NSString* textUrl = [NSString stringWithFormat:@"%@/checkin?email=%@", self.ipAddress , email];
-    NSData* textData = [self getDataFrom: textUrl];
+    NSData* textData = [self getDataFrom: [NSURL URLWithString:textUrl]];
     NSError* error;
     //error????
     NSArray* json = [NSJSONSerialization JSONObjectWithData:textData options:kNilOptions error:&error];

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeedListModel.h"
 
 @interface MapViewController : UIViewController
 
 @property (strong, nonatomic) UISearchDisplayController *searchController;
 @property (strong, nonatomic) NSMutableArray *data;
+@property (strong, nonatomic) FeedListModel *feedList;
 
 @end

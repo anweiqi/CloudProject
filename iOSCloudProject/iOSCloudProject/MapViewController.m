@@ -12,6 +12,8 @@
 
 @interface MapViewController ()
 
+@property (strong, nonatomic) NSMutableArray *markers;
+
 @end
 
 @implementation MapViewController {
@@ -23,6 +25,12 @@
     if (self) {
         self.title = NSLocalizedString(@"Friend Map", @"Map");
         self.tabBarItem.image = [UIImage imageNamed:@"map_marker.png"];
+        self.markers = [NSMutableArray array];
+        
+        UIBarButtonItem *addButton = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                      target:self action:@selector(getLatestFeeds)];
+        self.navigationItem.rightBarButtonItem = addButton;
     }
     return self;
 }
@@ -47,6 +55,7 @@
         marker.title = feed.name;
         marker.map = mapView;
         marker.icon = [GMSMarker markerImageWithColor:feed.color];
+        [self.markers addObject:marker];
     }
     
     
@@ -54,6 +63,41 @@
     self.view = mapView;
     
 }
+
+- (void)getLatestFeeds
+{
+    
+    [self.feedList getAllFeeds];
+    self.data = self.feedList.feedList;
+    // As this block of code is run in a background thread, we need to ensure the GUI
+    // update is executed in the main thread
+    [self performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    
+}
+
+- (void)reloadData
+{
+    
+    for (GMSMarker *marker in self.markers) {
+        marker.map = nil;
+    }
+    
+    [self.markers removeAllObjects];
+    
+    for (FeedModel *feed in self.data) {
+        CLLocationCoordinate2D position = CLLocationCoordinate2DMake(feed.latitude, feed.longitude);
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        marker.position = position;
+        marker.snippet = feed.content;
+        marker.appearAnimation = kGMSMarkerAnimationPop;
+        marker.title = feed.name;
+        marker.map = self.view;
+        marker.icon = [GMSMarker markerImageWithColor:feed.color];
+        [self.markers addObject:marker];
+    }
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

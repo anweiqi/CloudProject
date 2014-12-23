@@ -105,6 +105,7 @@
     [feedlist getAllFeeds];
     feedViewController.data = feedlist.feedList;
     feedViewController.feedList = feedlist;
+    mapViewController.feedList = feedlist;
     mapViewController.data = feedlist.feedList;
     favoriteViewController.data = friendlist.friends;
     favoriteViewController.friendlist = friendlist;

@@ -9,10 +9,10 @@
 #import "Models.h"
 #import <Foundation/Foundation.h>
 
-@interface FriendListModel : Models
+@interface FriendListModel : Models <NSURLConnectionDelegate>
 
 - (void)getFriends:(NSString *)email;
-- (void)addFriends:(NSString *)email;
+- (int)addFriends:(NSString *)email;
 - (void)deleteFriends:(NSString *)email;
 
 @property (nonatomic, strong) NSMutableArray *friends;

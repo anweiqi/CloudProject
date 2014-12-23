@@ -23,6 +23,8 @@
 		386EEEBC1A4638F100AC98DA /* FriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEBB1A4638F100AC98DA /* FriendModel.m */; };
 		386EEEBF1A463C3C00AC98DA /* FeedListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEBE1A463C3C00AC98DA /* FeedListModel.m */; };
 		386EEEC21A46624200AC98DA /* Models.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEC11A46624200AC98DA /* Models.m */; };
+		389592571A492F08008BBAA9 /* SettingNameViewControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 389592561A492F08008BBAA9 /* SettingNameViewControllerTableViewController.m */; };
+		3895925A1A49BAF2008BBAA9 /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 389592591A49BAF2008BBAA9 /* AddFriendViewController.m */; };
 		3E337CE21A48C92200EC77B8 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E337CE11A48C92200EC77B8 /* SignUpViewController.m */; };
 		3E3AB8871A1835F000CE0253 /* facebook_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB8861A1835F000CE0253 /* facebook_icon.png */; };
 		3E3AB8891A1835FD00CE0253 /* twitter_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E3AB8881A1835FD00CE0253 /* twitter_icon.png */; };
@@ -109,6 +111,10 @@
 		386EEEBE1A463C3C00AC98DA /* FeedListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedListModel.m; sourceTree = "<group>"; };
 		386EEEC01A46624200AC98DA /* Models.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Models.h; sourceTree = "<group>"; };
 		386EEEC11A46624200AC98DA /* Models.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Models.m; sourceTree = "<group>"; };
+		389592551A492F08008BBAA9 /* SettingNameViewControllerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingNameViewControllerTableViewController.h; sourceTree = "<group>"; };
+		389592561A492F08008BBAA9 /* SettingNameViewControllerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingNameViewControllerTableViewController.m; sourceTree = "<group>"; };
+		389592581A49BAF2008BBAA9 /* AddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendViewController.h; sourceTree = "<group>"; };
+		389592591A49BAF2008BBAA9 /* AddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendViewController.m; sourceTree = "<group>"; };
 		3E337CE01A48C92200EC77B8 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		3E337CE11A48C92200EC77B8 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		3E3AB8861A1835F000CE0253 /* facebook_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = facebook_icon.png; path = Images.xcassets/facebook_icon.png; sourceTree = "<group>"; };
@@ -292,11 +298,11 @@
 				3EE8BD951A15CC4E0056E6BE /* FeedView.m */,
 				3E435A3B1A1723C8009B77BC /* FeedTableViewCell.h */,
 				3E435A3C1A1723C8009B77BC /* FeedTableViewCell.m */,
-				3E3AB88A1A1839F100CE0253 /* FavoriteTableViewCell.h */,
 				3E4FFA081A487C9400020702 /* ComposerView.h */,
 				3E4FFA091A487C9400020702 /* ComposerView.m */,
 				3E4FFA0A1A487C9400020702 /* ComposerViewController.h */,
 				3E4FFA0B1A487C9400020702 /* ComposerViewController.m */,
+				3E3AB88A1A1839F100CE0253 /* FavoriteTableViewCell.h */,
 				3E3AB88B1A1839F100CE0253 /* FavoriteTableViewCell.m */,
 				383328731A48CDBB00CE0036 /* SettingTableViewCell.h */,
 				383328741A48CDBB00CE0036 /* SettingTableViewCell.m */,
@@ -310,8 +316,12 @@
 				3EE8BD891A159C5A0056E6BE /* MapViewController.m */,
 				3E435A441A182CC7009B77BC /* FavoriteViewController.h */,
 				3E435A451A182CC7009B77BC /* FavoriteViewController.m */,
+				389592581A49BAF2008BBAA9 /* AddFriendViewController.h */,
+				389592591A49BAF2008BBAA9 /* AddFriendViewController.m */,
 				3EE8BD8B1A159C810056E6BE /* SettingViewController.h */,
 				3EE8BD8C1A159C810056E6BE /* SettingViewController.m */,
+				389592551A492F08008BBAA9 /* SettingNameViewControllerTableViewController.h */,
+				389592561A492F08008BBAA9 /* SettingNameViewControllerTableViewController.m */,
 				386EEEBD1A463C3C00AC98DA /* FeedListModel.h */,
 				386EEEBE1A463C3C00AC98DA /* FeedListModel.m */,
 				386EEEB41A462F9F00AC98DA /* FeedModel.h */,
@@ -514,6 +524,8 @@
 			files = (
 				3E435A461A182CC7009B77BC /* FavoriteViewController.m in Sources */,
 				3E8451341A101B5200D7659A /* AppDelegate.m in Sources */,
+				389592571A492F08008BBAA9 /* SettingNameViewControllerTableViewController.m in Sources */,
+				3895925A1A49BAF2008BBAA9 /* AddFriendViewController.m in Sources */,
 				386EEEB61A462F9F00AC98DA /* FeedModel.m in Sources */,
 				386EEEBF1A463C3C00AC98DA /* FeedListModel.m in Sources */,
 				3E435A3D1A1723C8009B77BC /* FeedTableViewCell.m in Sources */,
