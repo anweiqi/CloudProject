@@ -123,6 +123,12 @@
 }
 
 -(void) createFB {
+    NSDictionary * currentUser = @{
+                                   @"$ItemName": @"weiqian.pku@gmail.com",
+                                   @"password":@"weiqian",
+                                   @"name":@"Weiqi An"
+                                   };
+    [UserSession storeLoggedinUser:currentUser];
     
 }
 
@@ -136,10 +142,10 @@
         //[self userLoggedIn];
         
         //_accessTokenData = FBSession.accessTokenData;
-        FBAccessTokenData *fbAccessToken = [[FBSession activeSession] accessTokenData];
-        NSLog(@"%@",fbAccessToken);
+//        FBAccessTokenData *fbAccessToken = [[FBSession activeSession] accessTokenData];
+//        NSLog(@"%@",fbAccessToken);
         
-        //[self createFB];
+        [self createFB];
         
         //NSString *post = [NSString stringWithFormat:@"Username=%@&Password=%@",@"username",@"password"];
         

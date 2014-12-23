@@ -15,7 +15,7 @@
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         
-        _profileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15.0, 10.0, 30.0, 30.0)];
+        _profileImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20.0, 10.0, 30.0, 30.0)];
         //[_profileImageView setImage:[UIImage imageNamed:@"Icon.png"]];
         [self addSubview:_profileImageView];
         
@@ -36,7 +36,7 @@
     [super layoutSubviews];
     
     [_nameLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
-    [_nameLabel setFrame:CGRectMake(80.0, 13.0, 210.0, 24.0)];
+    [_nameLabel setFrame:CGRectMake(65.0, 13.0, 210.0, 24.0)];
     //_nameLabel.text = @"Weiqi An";
     
     [_timeLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:13]];
@@ -49,7 +49,7 @@
     //[_content setFrame:CGRectMake(15.0, 40.0, 345.0, 60.0)];
     CGFloat fixedWidth = 345;
     CGSize newSize = [_content sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
-    [_content setFrame:CGRectMake(15.0, 40.0, 345.0, newSize.height)];
+    [_content setFrame:CGRectMake(20.0, 40.0, 345.0, newSize.height)];
     _content.editable = NO;
     /*CGRect newFrame = _content.frame;
      newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);

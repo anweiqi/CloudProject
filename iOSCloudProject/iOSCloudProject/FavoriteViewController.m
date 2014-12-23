@@ -126,12 +126,18 @@
         //cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
+    UIImage *defaultImage = [UIImage imageNamed:@"default_profile.jpg"];
+    [cell.profileImageView setImage:defaultImage];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSData *imageData = [NSData dataWithContentsOfURL:item.image];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
-            [cell.profileImageView setImage:[UIImage imageWithData:imageData]];
+            if (imageData) {
+                [cell.profileImageView setImage:[UIImage imageWithData:imageData]];
+            }
+            
         });
     });
     

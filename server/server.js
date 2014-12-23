@@ -4,7 +4,7 @@ var fs = require('fs');
 var app = express();
 
 var SDBcontroller = require('./Controllers/SDBController.js');
-//var S3controller  = require('./Controllers/S3Controller');
+var S3controller  = require('./Controllers/S3Controller');
 
 //SDBcontroller.simpleDBInit();
 
@@ -30,8 +30,8 @@ app.post('/follow', SDBcontroller.post_follow);
 //http://localhost:2015/follow?email=weiqian@gmail.com&follower=jiuyang@gmail.com
 app.delete('/follow', SDBcontroller.delete_follow);
 
-// app.get('/getUserPic/:email',S3controller.getUserPic);
-// app.post('/getUserPic/:email',S3controller.getUserPic);
+app.get('/getUserPic/:email',S3controller.getUserPic);
+app.post('/getUserPic/:email',S3controller.getUserPic);
 
 
 // fs.readFile('test.jpg', function(err, data) {

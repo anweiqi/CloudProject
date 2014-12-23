@@ -167,12 +167,18 @@ BOOL isSearching;
     }
     
     
+    UIImage *defaultImage = [UIImage imageNamed:@"default_profile.jpg"];
+    [cell.profileImageView setImage:defaultImage];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSData *imageData = [NSData dataWithContentsOfURL:item.imageUrl];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
-            [cell.profileImageView setImage:[UIImage imageWithData:imageData]];
+            if (imageData) {
+                [cell.profileImageView setImage:[UIImage imageWithData:imageData]];
+            }
+            
         });
     });
     
@@ -222,6 +228,8 @@ BOOL isSearching;
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    isSearching = NO;
+    [self.tableView reloadData];
     NSLog(@"Cancel clicked");
 }
 

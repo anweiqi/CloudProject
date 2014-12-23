@@ -77,7 +77,8 @@ UITextField* passwordField;
                                               otherButtonTitles:nil];
         [alert show];
     }else{
-        [UserSession storeLoggedinUser:queryDictionary];
+        NSDictionary *storeDictionary = @{ @"$ItemName": emailField.text, @"password": passwordField.text, @"name": nameField.text};
+        [UserSession storeLoggedinUser:storeDictionary];
         AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
         [appDelegate userloggedIn];
     }
