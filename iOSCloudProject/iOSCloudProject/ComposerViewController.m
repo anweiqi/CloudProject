@@ -61,6 +61,7 @@ NSDictionary* currentUser;
         latitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
         [_composerView.locationLabel setText:[NSString stringWithFormat:@"%@, %@", latitude, longitude]];
         [locationManager stopUpdatingLocation];
+        [self post];
     }
 }
 
@@ -79,7 +80,7 @@ NSDictionary* currentUser;
 - (void) post{
     //http://localhost:2015/checkin?email=weiqian@gmail.com&latitude=30&longitude=80&text=helloworld
 
-    NSURLComponents *components = [NSURLComponents componentsWithString:@"http://localhost:2015/user"];
+    NSURLComponents *components = [NSURLComponents componentsWithString:@"http://localhost:2015/checkin"];
     NSDictionary *queryDictionary = @{ @"email": currentUser[@"email"], @"latitude": latitude, @"longitude":longitude, @"text": _composerView.checkinText.text};
     NSMutableArray *queryItems = [NSMutableArray array];
     for (NSString *key in queryDictionary) {
@@ -87,6 +88,8 @@ NSDictionary* currentUser;
     }
     components.queryItems = queryItems;
     NSURL *url = components.URL;
+    
+    NSLog(@"%@",url);
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"POST"];
