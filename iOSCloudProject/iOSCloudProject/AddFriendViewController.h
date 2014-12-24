@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FriendListModel.h"
 
-@interface AddFriendViewController : UITableViewController
+@interface AddFriendViewController : UITableViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) UITableViewController *favoriteViewController;
 @property (strong, nonatomic) FriendListModel *friendlist;

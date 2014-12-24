@@ -36,20 +36,19 @@
     [super layoutSubviews];
     
     [_nameLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:13]];
-    [_nameLabel setFrame:CGRectMake(65.0, 13.0, 210.0, 24.0)];
+    [_nameLabel setFrame:CGRectMake(65.0, 13.0, 140, 24.0)];
     //_nameLabel.text = @"Weiqi An";
     
     [_timeLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:13]];
-    [_timeLabel setFrame:CGRectMake(300.0, 13.0, 60.0, 24.0)];
+    [_timeLabel setFrame:CGRectMake(230, 13.0, 60.0, 24.0)];
     //_timeLabel.text = @"4 mins";
     _timeLabel.textAlignment = NSTextAlignmentRight;
     
     //[_content setText:@"There's just no way to describe this moment of my lifetime. It is so extraordinary to be in In& Out and watch CQ eat two double-doubles in 5 mins. I enjoy junk food. But it was way"];
     [_content setFont:[UIFont fontWithName:@"HelveticaNeue" size:13]];
-    //[_content setFrame:CGRectMake(15.0, 40.0, 345.0, 60.0)];
     CGFloat fixedWidth = 345;
     CGSize newSize = [_content sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
-    [_content setFrame:CGRectMake(20.0, 40.0, 345.0, newSize.height)];
+    [_content setFrame:CGRectMake(15.0, 40.0, 290, newSize.height)];
     _content.editable = NO;
     /*CGRect newFrame = _content.frame;
      newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);

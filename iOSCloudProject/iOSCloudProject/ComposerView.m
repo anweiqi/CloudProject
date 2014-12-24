@@ -25,7 +25,7 @@
     
     _locationButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [_locationButton setFrame:CGRectMake(0, 0, screenWidth, 44)];
-    [_locationButton setTitle:@"Check In" forState:UIControlStateNormal];
+    [_locationButton setTitle:@"Get Location" forState:UIControlStateNormal];
     //[_locationButton setBackgroundColor:[UIColor blueColor]];
     [_locationButton addTarget:self.delegate action:@selector(locationTapped) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_locationButton];

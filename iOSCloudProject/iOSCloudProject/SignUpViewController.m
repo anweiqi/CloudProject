@@ -41,7 +41,7 @@ UITextField* passwordField;
 
 - (void)createAccount{
     
-    NSURLComponents *components = [NSURLComponents componentsWithString:@"http://160.39.221.6:2015/user"];
+    NSURLComponents *components = [NSURLComponents componentsWithString:@"http://129.236.214.233:2015/user"];
     NSDictionary *queryDictionary = @{ @"email": emailField.text, @"password": passwordField.text, @"name": nameField.text};
     NSMutableArray *queryItems = [NSMutableArray array];
     for (NSString *key in queryDictionary) {
