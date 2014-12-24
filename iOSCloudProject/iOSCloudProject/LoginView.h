@@ -14,7 +14,7 @@
 
 @class GPPSignInButton;
 
-@interface LoginView : UIView
+@interface LoginView : UIView <UITextFieldDelegate>
 
 @property (weak, nonatomic) id <LoginDelegate> delegate;
 

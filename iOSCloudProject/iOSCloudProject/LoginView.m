@@ -21,6 +21,11 @@
     return self;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    NSLog(@"%@",@"did begin editing");
+    textField.placeholder = nil;
+}
+
 - (void) layoutSubviews{
     
     UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(50, 70, 220, 60)];
@@ -34,7 +39,7 @@
     _emailTextField.placeholder = @"Email";
     _emailTextField.backgroundColor = [UIColor clearColor];
     _emailTextField.autocorrectionType = UITextAutocorrectionTypeYes;
-    _emailTextField.delegate = self.delegate;
+    _emailTextField.delegate = self;
     [self addSubview:_emailTextField];
     
     _passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(50, 198, 220, 38)];

@@ -10,7 +10,7 @@
 #import "LoginView.h"
 #import <GooglePlus/GPPSignIn.h>
 
-@interface LoginViewController : UIViewController <LoginDelegate, GPPSignInDelegate>
+@interface LoginViewController : UIViewController <LoginDelegate, GPPSignInDelegate, UITextFieldDelegate>
 
 - (void) loginTapped;
 
