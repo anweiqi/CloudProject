@@ -1,5 +1,0 @@
-{
-	"accessKeyId":"AKIAJPR4SRU6Q43U6BGQ",
-	"secretAcessKey":"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",
-	"region":"us-east-1"
-}

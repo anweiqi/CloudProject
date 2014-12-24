@@ -30,6 +30,12 @@ static NSString * const kClientId = @"814816072679-6hfkd2q1n8b8slh21e0uie5ctgt0g
     self.view = _loginView;
     [self.navigationController setNavigationBarHidden:YES];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -55,11 +61,16 @@ static NSString * const kClientId = @"814816072679-6hfkd2q1n8b8slh21e0uie5ctgt0g
     // Dispose of any resources that can be recreated.
 }
 
+-(void)dismissKeyboard {
+    [_loginView.emailTextField resignFirstResponder];
+    [_loginView.passwordTextField resignFirstResponder];
+}
+
 - (void) myLoginTapped{
     NSLog(@"%@",_loginView.emailTextField.text);
     NSLog(@"The PW is !!!%@", _loginView.passwordTextField.text);
     
-    NSURLComponents *components = [NSURLComponents componentsWithString:@"http://localhost:2015/login"];
+    NSURLComponents *components = [NSURLComponents componentsWithString:@"http://129.236.214.233:2015/login"];
     NSDictionary *queryDictionary = @{ @"email": _loginView.emailTextField.text, @"password": _loginView.passwordTextField.text};
     
     NSMutableArray *queryItems = [NSMutableArray array];

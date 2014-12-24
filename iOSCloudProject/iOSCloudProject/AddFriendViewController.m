@@ -19,12 +19,17 @@ UITextField* nameField;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:NO];
+    self.title = @"Add Friend";
 
     UIBarButtonItem *createButton = [[UIBarButtonItem alloc]
-                                     initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                     initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                      target:self
                                      action:@selector(addFriend)];
     self.navigationItem.rightBarButtonItem = createButton;
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.view.backgroundColor = [UIColor colorWithRed:(247/255.0) green:(247/255.0) blue:(247/255.0) alpha:1];
+    self.tableView.separatorColor = [UIColor clearColor];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -51,14 +56,16 @@ UITextField* nameField;
                                               otherButtonTitles:nil];
         [alert show];
     }
-    
-    [self.favoriteViewController.tableView reloadData];
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 40;
 }
 
 #pragma mark - Table view data source
@@ -100,6 +107,12 @@ UITextField* nameField;
     
     return cell;
     
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if ([alertView.title isEqualToString:@"Succeed"]) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 

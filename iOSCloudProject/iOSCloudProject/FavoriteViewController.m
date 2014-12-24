@@ -21,7 +21,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.title = NSLocalizedString(@"Special List", @"Favorites");
+        self.title = NSLocalizedString(@"Friends", @"Favorites");
         self.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:1];
         
         UIBarButtonItem *createButton = [[UIBarButtonItem alloc]

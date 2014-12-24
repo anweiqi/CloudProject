@@ -11,7 +11,7 @@
 @implementation Models
 
 - (id) init {
-    self.ipAddress = @"http://localhost:2015";
+    self.ipAddress = @"http://129.236.214.233:2015";
     return self;
 }
 

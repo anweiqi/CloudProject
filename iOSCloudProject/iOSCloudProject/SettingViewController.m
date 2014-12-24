@@ -105,8 +105,7 @@ NSDictionary * currentUser;
         UITableViewCell *cell = [[UITableViewCell alloc] init];
 //        if (cell == nil) {
 //            cell = [[UITableViewCell alloc] init];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            //cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.accessoryType = UITableViewCellAccessoryNone;
         //}
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
