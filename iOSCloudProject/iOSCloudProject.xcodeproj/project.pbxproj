@@ -25,6 +25,7 @@
 		386EEEC21A46624200AC98DA /* Models.m in Sources */ = {isa = PBXBuildFile; fileRef = 386EEEC11A46624200AC98DA /* Models.m */; };
 		389592571A492F08008BBAA9 /* SettingNameViewControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 389592561A492F08008BBAA9 /* SettingNameViewControllerTableViewController.m */; };
 		3895925A1A49BAF2008BBAA9 /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 389592591A49BAF2008BBAA9 /* AddFriendViewController.m */; };
+		38AFFCBB1A4A3EB90016FD32 /* GeoCodeModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AFFCBA1A4A3EB90016FD32 /* GeoCodeModels.m */; };
 		3E337CE21A48C92200EC77B8 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E337CE11A48C92200EC77B8 /* SignUpViewController.m */; };
 		3E337CE51A491B3D00EC77B8 /* UserSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E337CE41A491B3D00EC77B8 /* UserSession.m */; };
 		3E337CE71A4A043A00EC77B8 /* default_profile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E337CE61A4A043A00EC77B8 /* default_profile.jpg */; };
@@ -117,6 +118,8 @@
 		389592561A492F08008BBAA9 /* SettingNameViewControllerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingNameViewControllerTableViewController.m; sourceTree = "<group>"; };
 		389592581A49BAF2008BBAA9 /* AddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendViewController.h; sourceTree = "<group>"; };
 		389592591A49BAF2008BBAA9 /* AddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendViewController.m; sourceTree = "<group>"; };
+		38AFFCB91A4A3EB90016FD32 /* GeoCodeModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoCodeModels.h; sourceTree = "<group>"; };
+		38AFFCBA1A4A3EB90016FD32 /* GeoCodeModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoCodeModels.m; sourceTree = "<group>"; };
 		3E337CE01A48C92200EC77B8 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		3E337CE11A48C92200EC77B8 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		3E337CE31A491B3D00EC77B8 /* UserSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSession.h; sourceTree = "<group>"; };
@@ -340,6 +343,8 @@
 				386EEEBB1A4638F100AC98DA /* FriendModel.m */,
 				385997021A488D6B00C2AB3B /* UserModel.h */,
 				385997031A488D6B00C2AB3B /* UserModel.m */,
+				38AFFCB91A4A3EB90016FD32 /* GeoCodeModels.h */,
+				38AFFCBA1A4A3EB90016FD32 /* GeoCodeModels.m */,
 				386EEEC01A46624200AC98DA /* Models.h */,
 				386EEEC11A46624200AC98DA /* Models.m */,
 				3EE8BD7C1A155B730056E6BE /* Images.xcassets */,
@@ -539,6 +544,7 @@
 				386EEEBF1A463C3C00AC98DA /* FeedListModel.m in Sources */,
 				3E435A3D1A1723C8009B77BC /* FeedTableViewCell.m in Sources */,
 				385997041A488D6B00C2AB3B /* UserModel.m in Sources */,
+				38AFFCBB1A4A3EB90016FD32 /* GeoCodeModels.m in Sources */,
 				3E3AB88C1A1839F100CE0253 /* FavoriteTableViewCell.m in Sources */,
 				3E337CE21A48C92200EC77B8 /* SignUpViewController.m in Sources */,
 				386EEEB91A4635AC00AC98DA /* FriendListModel.m in Sources */,

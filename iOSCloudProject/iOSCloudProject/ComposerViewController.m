@@ -10,6 +10,7 @@
 
 #import "ComposerViewController.h"
 #import "UserSession.h"
+#import "GeoCodeModels.h"
 
 @interface ComposerViewController ()
 
@@ -80,7 +81,10 @@ NSDictionary* currentUser;
 - (void) post{
     //http://localhost:2015/checkin?email=weiqian@gmail.com&latitude=30&longitude=80&text=helloworld
 
-    NSURLComponents *components = [NSURLComponents componentsWithString:@"http://localhost:2015/checkin"];
+    GeoCodeModels *geoCodeModels = [[GeoCodeModels alloc] init];
+    [geoCodeModels getLocation:latitude longitude:longitude];
+    
+    NSURLComponents *components = [NSURLComponents componentsWithString:@"http://160.39.221.6:2015/checkin"];
     NSDictionary *queryDictionary = @{ @"email": currentUser[@"email"], @"latitude": latitude, @"longitude":longitude, @"text": _composerView.checkinText.text};
     NSMutableArray *queryItems = [NSMutableArray array];
     for (NSString *key in queryDictionary) {

@@ -7,6 +7,7 @@
 //
 
 #import "UserModel.h"
+#import <UIKit/UIKit.h>
 
 @implementation UserModel
 - (id) init {
@@ -65,6 +66,14 @@
     self.name = name;
     NSLog(@"%@3", password);
     return response;
+}
+
+- (void) setImage: (UIImage *)image {
+    NSString* urlString = [NSString stringWithFormat:@"%@/postUserPic/%@", self.ipAddress , self.email];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+    
+    
 }
 
 @end
